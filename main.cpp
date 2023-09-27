@@ -20,22 +20,24 @@ int main()
     studentas stud;
     vector <studentas> grupe;
 
-    int n, m;
+    int n;
     cout<<"Iveskite, kiek studentu yra sarase:"<<endl;
     cin>>n;
-    cout<<"Iveskite pazymiu skaiciu: "<<endl;
-    cin>>m;
 
     for (int i=0; i<n; i++)
     {
         cout<<"Iveskite varda ir pavarde: "<<endl;
         cin>>stud.vardas>>stud.pavarde;
 
-        for (int j=0; j<m; j++) {
-            int p;
-            cout<<"Iveskite "<<j+1<<" pazymi: ";
-            cin>>p;
+        int m = 0, p;
+        cout<<"Iveskite pazymi (0 zymi pazymiu ivedimo pabaiga)";
+        cin>>p;
+        while (p != 0)
+        {
+            m++;
             stud.pazymiai.push_back(p);
+            cout<<"Iveskite pazymi (0 zymi pazymiu ivedimo pabaiga)";
+            cin>>p;
         }
         sort(stud.pazymiai.begin(), stud.pazymiai.end());
 
