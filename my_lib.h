@@ -29,8 +29,7 @@ struct studentas {
 
         bool operator<(const studentas& o) const
         {
-            if (pavarde != o.pavarde) return pavarde < o.pavarde;
-            return vardas < o.vardas;
+            return pavarde < o.pavarde;
         }
     };
 

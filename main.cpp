@@ -34,7 +34,7 @@ int main()
             if (namudarbas.substr(0, 2) == "ND") sk++;
         }
 
-        while(failas >> stud.pavarde >> stud.vardas)
+        while(failas >> stud.vardas >> stud.pavarde)
         {
             for(int i=0; i<sk; i++)
             {
