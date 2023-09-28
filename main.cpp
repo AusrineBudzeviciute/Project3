@@ -2,7 +2,6 @@
 
 int main()
 {
-
     studentas stud;
     vector <studentas> grupe;
 
@@ -105,7 +104,7 @@ int main()
 
 
     }
-
+    sort(grupe.begin(), grupe.end());
     char isvedimas;
     cout<<"Iveskite 'V', jeigu norite matyti vidurki, iveskite 'M', jeigu norite matyti mediana";
     cin>>isvedimas;

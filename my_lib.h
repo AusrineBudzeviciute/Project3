@@ -9,14 +9,32 @@
 #include <fstream>
 
 
-using namespace std;
+using std::cout;
+using std::cin;
+using std::endl;
+using std::string;
+using std::vector;
+using std::fixed;
+using std::setprecision;
+using std::setw;
+using std::left;
+using std::ifstream;
+using std::istringstream;
 
 struct studentas {
         string vardas, pavarde;
         vector <int> pazymiai;
         int egz;
         float rez, mediana;
+
+        bool operator<(const studentas& o) const
+        {
+            if (pavarde != o.pavarde) return pavarde < o.pavarde;
+            return vardas < o.vardas;
+        }
     };
+
+
 
 int generate_random();
 float median(vector<int> pazymiai);
