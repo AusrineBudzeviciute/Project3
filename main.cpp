@@ -135,6 +135,8 @@ catch (const exception& e) {
     cerr << "Klaida: " << e.what() << endl;
     return 1;}
 
+    return 0;
+
 }
 
 
