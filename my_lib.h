@@ -7,6 +7,7 @@
 #include <ctime>
 #include <cstdlib>
 #include <fstream>
+#include <stdexcept>
 
 
 using std::cout;
@@ -20,6 +21,9 @@ using std::setw;
 using std::left;
 using std::ifstream;
 using std::istringstream;
+using std::invalid_argument;
+using std::cerr;
+using std::exception;
 
 struct studentas {
         string vardas, pavarde;

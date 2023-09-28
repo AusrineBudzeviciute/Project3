@@ -4,21 +4,21 @@ int main()
 {
     studentas stud;
     vector <studentas> grupe;
-
+try{
     char ivedimas1;
-    cout<<"Iveskite 'f', jeigu norite nuskaityti faila; iveskite 'a',jeigu duomenys bus ivedami";
+    cout<<"Iveskite 'f', jeigu norite nuskaityti faila; iveskite 'a',jeigu duomenys bus ivedami: ";
     cin>>ivedimas1;
 
     if (ivedimas1 == 'f')
     {
         string pavadinimas;
-        cout<<"Iveskite tekstinio failo pavadinima ";
+        cout<<"Iveskite tekstinio failo pavadinima: ";
         cin>>pavadinimas;
 
         ifstream failas(pavadinimas);
         if(failas.fail())
         {
-            cout<<"Failo atidarymo klaida"<<endl;
+            cout<<"Failo atidarymo klaida."<<endl;
             return 1;
         }
 
@@ -39,8 +39,9 @@ int main()
             for(int i=0; i<sk; i++)
             {
                 int paz;
-                failas >> paz;
-                stud.pazymiai.push_back(paz);
+                if(!(failas>>paz)) {throw invalid_argument("Netinkamas pazymys faile.");}
+                else if (paz <=0 || paz>10){throw invalid_argument("Netinkamas pazymys faile.");}
+                else stud.pazymiai.push_back(paz);
             }
             failas >> stud.egz;
             stud.rez = mean(stud.pazymiai, stud.egz);
@@ -58,19 +59,26 @@ int main()
         cout<<"Iveskite, kiek studentu yra sarase:"<<endl;
         cin>>n;
 
+        if (cin.fail() || n <= 0) {
+            throw invalid_argument("Pateiktas netinkamas skaicius.");}
+
         for (int i=0; i<n; i++)
         {
             cout<<"Iveskite varda ir pavarde: "<<endl;
             cin>>stud.vardas>>stud.pavarde;
 
             char ivedimas;
-            cout<<"Iveskite '+', jeigu norite, kad studento pazymius bei egzamino rezultatus sugeneruotu automatiskai.Iveskite '-', jeigu juos ivesite patys.";
+            cout<<"Iveskite '+', jeigu norite, kad studento pazymius bei egzamino rezultatus sugeneruotu automatiskai.Iveskite '-', jeigu juos ivesite patys: ";
             cin>>ivedimas;
             if (ivedimas == '+')
             {
                 int skaicius;
-                cout<<"Iveskite, kiek pazymiu generuojama";
+                cout<<"Iveskite, kiek pazymiu generuojama: ";
                 cin>>skaicius;
+
+                if (cin.fail() || skaicius <= 0) {
+                throw invalid_argument("Pateiktas netinkamas skaicius.");}
+
                 for(int j=0; j<skaicius; j++)
                     stud.pazymiai.push_back(generate_random());
                 stud.egz = generate_random();
@@ -84,17 +92,27 @@ int main()
             else if (ivedimas == '-')
             {
                 int p;
-                cout<<"Iveskite pazymi (0 zymi pazymiu ivedimo pabaiga)";
+                cout<<"Iveskite pazymi (0 zymi pazymiu ivedimo pabaiga): ";
                 cin>>p;
+
+                if (cin.fail() || p<0 || p>10)
+                    throw invalid_argument("Pateiktas netinkamas skaicius.");
+
                 while (p != 0)
                 {
                     stud.pazymiai.push_back(p);
-                    cout<<"Iveskite pazymi (0 zymi pazymiu ivedimo pabaiga)";
+                    cout<<"Iveskite pazymi (0 zymi pazymiu ivedimo pabaiga): ";
                     cin>>p;
+                    if (cin.fail() || p<0 || p>10)
+                        throw invalid_argument("Pateiktas netinkamas skaicius.");
                 }
 
                 cout<<"Iveskite egzamino rezultata: "<<endl;
                 cin>>stud.egz;
+                if (cin.fail() || stud.egz<0 || stud.egz>10)
+                    throw invalid_argument("Pateiktas netinkamas skaicius.");
+
+
                 stud.mediana = median(stud.pazymiai);
                 stud.rez = mean(stud.pazymiai, stud.egz);
                 grupe.push_back(stud);
@@ -106,11 +124,16 @@ int main()
     }
     sort(grupe.begin(), grupe.end());
     char isvedimas;
-    cout<<"Iveskite 'V', jeigu norite matyti vidurki, iveskite 'M', jeigu norite matyti mediana";
+    cout<<"Iveskite 'V', jeigu norite matyti vidurki, iveskite 'M', jeigu norite matyti mediana: ";
     cin>>isvedimas;
     if (isvedimas == 'V') print_mean(grupe);
     else print_median(grupe);
+}
 
+
+catch (const exception& e) {
+    cerr << "Klaida: " << e.what() << endl;
+    return 1;}
 
 }
 
