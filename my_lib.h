@@ -44,4 +44,8 @@ float median(vector<int> pazymiai);
 float mean(vector<int> pazymiai, int egzaminas);
 void print_mean(vector<studentas> grupe);
 void print_median(vector<studentas> grupe);
+void print_mean_median (vector<studentas> grupe);
+void tikrinimas(int& x);
+
+
 
