@@ -1,3 +1,4 @@
+
 #include "my_lib.h"
 
 int generate_random()
@@ -69,7 +70,28 @@ void tikrinimas(int& x)
 }
 
 
+void Failo_kurimas (int studentusk)
+{
+    ofstream file ("studentai.txt");
+    if (!file){cerr<<"Failo klaida."<<endl;}
 
+    file << "Vardas              Pavarde             ND1  ND2  ND3  ND4  ND5  egz"<<endl;
+    srand(time(0));
+    for (int i = 1; i <= studentusk; i++)
+    {
+        vector <int> pazymiai;
+        int rezultatas;
 
+        for (int i = 1; i < 6; i++){
+            pazymiai.push_back((rand()%10)+1);
+        }
+        rezultatas = (rand()%10)+1;
 
+        file <<left<<setw(20)<<"Vardas"+to_string(i)<<left<<setw(20)<< "Pavarde"+to_string(i);
+        for (auto &a: pazymiai)
+            file <<left<<setw(5)<< a;
+        file<<left<< setw(5) << rezultatas<<endl;
+    }
 
+    file.close();
+}

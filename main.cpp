@@ -5,7 +5,7 @@ int main()
     studentas stud;
     vector <studentas> grupe;
     char ivedimas1;
-    cout<<"Iveskite 'f', jeigu norite nuskaityti faila; iveskite 'a',jeigu duomenys bus ivedami: ";
+    cout<<"Iveskite 'f', jeigu norite nuskaityti faila; iveskite 'a',jeigu duomenys bus ivedami; iveskite 'k', jeigu failas generuojamas automatiskai:";
     cin>>ivedimas1;
 
 try{
@@ -57,7 +57,7 @@ try{
     }
 
 
-    else
+    else if (ivedimas1=='a')
     {
         int n;
         cout<<"Iveskite, kiek studentu yra sarase:"<<endl;
@@ -122,6 +122,10 @@ try{
         if (isvedimas == 'V') print_mean(grupe);
         else print_median(grupe);
     }
+
+    else
+        Failo_kurimas(10);
+
 
 }
     catch (const exception& e) {

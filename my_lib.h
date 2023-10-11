@@ -24,6 +24,8 @@ using std::istringstream;
 using std::invalid_argument;
 using std::cerr;
 using std::exception;
+using std::ofstream;
+using std::to_string;
 
 struct studentas {
         string vardas, pavarde;
@@ -46,6 +48,9 @@ void print_mean(vector<studentas> grupe);
 void print_median(vector<studentas> grupe);
 void print_mean_median (vector<studentas> grupe);
 void tikrinimas(int& x);
+void Failo_kurimas (int studentusk);
+
+
 
 
 
