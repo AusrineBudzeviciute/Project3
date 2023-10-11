@@ -95,3 +95,63 @@ void Failo_kurimas (int studentusk)
 
     file.close();
 }
+
+
+void darbas_su_failu(string pavadinimas, struct studentas stud)
+{
+    ifstream failas(pavadinimas);
+    if(failas.fail()) cout<<"Failo atidarymo klaida."<<endl;
+
+    string antraste;
+    for (int i = 0; i<1; i++) getline(failas,antraste);
+
+    istringstream iss(antraste);
+    string namudarbas;
+    int sk = 0;
+
+    while (iss >> namudarbas)
+    {
+        if (namudarbas.substr(0, 2) == "ND") sk++;
+    }
+            vector <studentas> gudruciai, vargsiukai;
+    while(failas >> stud.vardas >> stud.pavarde)
+    {
+        for(int i=0; i<sk; i++)
+        {
+            int paz;
+            if(!(failas>>paz)) throw invalid_argument("Netinkamas pazymys faile.");
+            if (paz<=0 || paz>10) throw invalid_argument("Netinkamas pazymys faile.");
+            stud.pazymiai.push_back(paz);
+        }
+        failas >> stud.egz;
+        stud.rez = mean(stud.pazymiai, stud.egz);
+
+        if (stud.rez >= 5)
+        {
+            gudruciai.push_back(stud);
+        }
+        else vargsiukai.push_back(stud);
+        stud.pazymiai.clear();
+        sort(gudruciai.begin(), gudruciai.end());
+        sort(vargsiukai.begin(), vargsiukai.end());
+    }
+
+    print_studentai("gudruciai.txt",gudruciai);
+    print_studentai("vargsiukai.txt",vargsiukai);
+
+    failas.close();
+}
+
+void print_studentai(string pavadinimas, vector<studentas> studentai)
+{
+    ofstream g(pavadinimas);
+    g<<"Pavarde             Vardas              Galutinis (Vid.)"<<endl;
+    g<<"---------------------------------------------------------"<<endl;
+    for (auto &a: studentai)
+        g<<left<<setw(20)<<a.pavarde<<setw(20)<<a.vardas<<setw(5)<<fixed<<setprecision(2)<<a.rez<<endl;
+}
+
+
+
+
+

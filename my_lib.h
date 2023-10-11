@@ -49,6 +49,9 @@ void print_median(vector<studentas> grupe);
 void print_mean_median (vector<studentas> grupe);
 void tikrinimas(int& x);
 void Failo_kurimas (int studentusk);
+void darbas_su_failu(string pavadinimas, struct studentas stud);
+void print_studentai(string pavadinimas, vector<studentas> studentai);
+
 
 
 

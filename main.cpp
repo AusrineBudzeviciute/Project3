@@ -124,7 +124,11 @@ try{
     }
 
     else
-        Failo_kurimas(10);
+    {
+        Failo_kurimas(100);
+        darbas_su_failu("studentai.txt", stud);
+    }
+
 
 
 }
