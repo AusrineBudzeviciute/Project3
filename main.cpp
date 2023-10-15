@@ -16,6 +16,10 @@ try{
         cout<<"Iveskite failo pavadinima: ";
         cin>>pav;
         Failo_nuskaitymas(pav, stud, grupe);
+        int pasirinkimas = rusiavimui();
+        for (auto &a: grupe)
+            a.x = pasirinkimas;
+        sort(grupe.begin(), grupe.end());
         Failo_rusiavimas(grupe);
     }
 

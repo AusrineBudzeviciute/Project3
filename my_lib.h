@@ -35,22 +35,15 @@ struct studentas {
         int egz;
         float rez, mediana;
 
-
-
+        int x;
+        bool operator<(const studentas& o) const{
+            if(x == 1) return vardas < o.vardas;
+            else if (x == 2) return pavarde < o.pavarde;
+            else if (x == 3) return rez < o.rez;
+        }
 
 };
 
-
-/*
-
-    {
-        if(pasirinkimas == 1) return o1.vardas < o2.vardas;
-
-        else if (pasirinkimas == 2) return o1.pavarde < o2.pavarde;
-
-        else if (pasirinkimas == 3) return o1.egz < o2.egz;
-    }
-    */
 
 
 
