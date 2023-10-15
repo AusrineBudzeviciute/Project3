@@ -1,7 +1,10 @@
 #include "my_lib.h"
-
-
-
+/*
+auto start = std::chrono::high_resolution_clock::now(); // Paleisti
+auto end = std::chrono::high_resolution_clock::now(); // Stabdyti
+std::chrono::duration<double> diff = end-start; // Skirtumas (s)
+std::cout << "10 000 000 elementų užpildymas užtruko: "<< diff.count() << " s\n";
+*/
 int main()
 {
     studentas stud;

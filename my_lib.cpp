@@ -81,6 +81,7 @@ void tikrinimas(int& x)
 
 void Failo_nuskaitymas (string pavadinimas, struct studentas stud, vector <studentas> &grupe)
 {
+    auto start = std::chrono::high_resolution_clock::now();
     ifstream failas(pavadinimas);
     if(failas.fail()) cout<<"Failo atidarymo klaida."<<endl;
 
@@ -112,11 +113,15 @@ void Failo_nuskaitymas (string pavadinimas, struct studentas stud, vector <stude
         stud.pazymiai.clear();
     }
     failas.close();
+    auto end = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> diff = end-start;
+    std::cout << "Failo nuskaitymas uztruko: "<< diff.count() << " s\n";
 }
 
 
 void Failo_kurimas (int studentusk)
 {
+    auto start = std::chrono::high_resolution_clock::now();
     ofstream file ("studentai"+to_string(studentusk)+".txt");
     if (!file){cerr<<"Failo klaida."<<endl;}
 
@@ -132,20 +137,36 @@ void Failo_kurimas (int studentusk)
         file<<left<< setw(5) << (rand()%10)+1 <<endl;
     }
     file.close();
+    auto end = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> diff = end-start;
+    std::cout << "Failo kurimas uztruko: "<< diff.count() << " s\n";
 }
 
 void Failo_rusiavimas (vector <studentas> grupe)
 {
     vector <studentas> gudruciai, neismaneliai;
+    auto start = std::chrono::high_resolution_clock::now();
     for (auto &a: grupe)
     {
         if (a.rez >= 5) gudruciai.push_back(a);
         else if (a.rez < 5) neismaneliai.push_back(a);
     }
-    sort(gudruciai.begin(), gudruciai.end());
-    sort(neismaneliai.begin(), neismaneliai.end());
+    auto end = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> diff = end-start;
+    std::cout << "Failo rusiavimas uztruko: "<< diff.count() << " s\n";
+
+
+    auto start2 = std::chrono::high_resolution_clock::now();
     print_file("gudruciai.txt", gudruciai);
+    auto end2 = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> diff2 = end2-start2;
+    std::cout << "Gudruciu failo kurimas uztruko: "<< diff2.count() << " s\n";
+
+    auto start3 = std::chrono::high_resolution_clock::now();
     print_file("neismaneliai.txt", neismaneliai);
+    auto end3 = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> diff3 = end3-start3;
+    std::cout << "Neismaneliu failo kurimas uztruko: "<< diff3.count() << " s\n";
 }
 
 
