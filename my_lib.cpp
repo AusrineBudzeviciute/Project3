@@ -7,6 +7,15 @@ int generate_random()
     return (rand()%10)+1;
 }
 
+int rusiavimui()
+{
+    int pasirinkimas;
+    cout<<"Iveskite parametra, pagal kuri rusiuojamas failas (1- vardas, 2 - pavarde, 3 - rezultatas): ";
+    cin>>pasirinkimas;
+    return pasirinkimas;
+}
+
+
 float median(vector<int> pazymiai)
 {
     float mediana;
@@ -48,8 +57,8 @@ void print_mean_median (vector<studentas> grupe)
 {
     cout<<"Pavarde             Vardas              Galutinis (Vid.)    Galutinis (Med.)"<<endl;
     cout<<"------------------------------------------------------------------------"<<endl;
-    for (auto &d: grupe)
-        cout<<left<<setw(20)<<d.pavarde<<setw(20)<<d.vardas<<setw(20)<<fixed<<setprecision(2)<<d.rez<<setw(5)<<d.mediana<<endl;
+    for (auto &a: grupe)
+        cout<<left<<setw(20)<<a.pavarde<<setw(20)<<a.vardas<<setw(20)<<fixed<<setprecision(2)<<a.rez<<setw(5)<<a.mediana<<endl;
 }
 
 
@@ -70,34 +79,7 @@ void tikrinimas(int& x)
 }
 
 
-void Failo_kurimas (int studentusk)
-{
-    ofstream file ("studentai.txt");
-    if (!file){cerr<<"Failo klaida."<<endl;}
-
-    file << "Vardas              Pavarde             ND1  ND2  ND3  ND4  ND5  egz"<<endl;
-    srand(time(0));
-    for (int i = 1; i <= studentusk; i++)
-    {
-        vector <int> pazymiai;
-        int rezultatas;
-
-        for (int i = 1; i < 6; i++){
-            pazymiai.push_back((rand()%10)+1);
-        }
-        rezultatas = (rand()%10)+1;
-
-        file <<left<<setw(20)<<"Vardas"+to_string(i)<<left<<setw(20)<< "Pavarde"+to_string(i);
-        for (auto &a: pazymiai)
-            file <<left<<setw(5)<< a;
-        file<<left<< setw(5) << rezultatas<<endl;
-    }
-
-    file.close();
-}
-
-
-void darbas_su_failu(string pavadinimas, struct studentas stud)
+void Failo_nuskaitymas (string pavadinimas, struct studentas stud, vector <studentas> &grupe)
 {
     ifstream failas(pavadinimas);
     if(failas.fail()) cout<<"Failo atidarymo klaida."<<endl;
@@ -113,7 +95,7 @@ void darbas_su_failu(string pavadinimas, struct studentas stud)
     {
         if (namudarbas.substr(0, 2) == "ND") sk++;
     }
-            vector <studentas> gudruciai, vargsiukai;
+
     while(failas >> stud.vardas >> stud.pavarde)
     {
         for(int i=0; i<sk; i++)
@@ -125,32 +107,55 @@ void darbas_su_failu(string pavadinimas, struct studentas stud)
         }
         failas >> stud.egz;
         stud.rez = mean(stud.pazymiai, stud.egz);
-
-        if (stud.rez >= 5)
-        {
-            gudruciai.push_back(stud);
-        }
-        else vargsiukai.push_back(stud);
+        stud.mediana = median(stud.pazymiai);
+        grupe.push_back(stud);
         stud.pazymiai.clear();
-        sort(gudruciai.begin(), gudruciai.end());
-        sort(vargsiukai.begin(), vargsiukai.end());
     }
-
-    print_studentai("gudruciai.txt",gudruciai);
-    print_studentai("vargsiukai.txt",vargsiukai);
-
     failas.close();
 }
 
-void print_studentai(string pavadinimas, vector<studentas> studentai)
+
+void Failo_kurimas (int studentusk)
+{
+    ofstream file ("studentai"+to_string(studentusk)+".txt");
+    if (!file){cerr<<"Failo klaida."<<endl;}
+
+    file << "Vardas              Pavarde             ND1  ND2  ND3  ND4  ND5  egz"<<endl;
+    srand(time(0));
+    for (int i = 1; i <= studentusk; i++)
+    {
+        file <<left<<setw(20)<<"Vardas"+to_string(i)<<left<<setw(20)<< "Pavarde"+to_string(i);
+
+        for (int i = 1; i < 6; i++){
+            file <<left<<setw(5)<< (rand()%10)+1;
+        }
+        file<<left<< setw(5) << (rand()%10)+1 <<endl;
+    }
+    file.close();
+}
+
+void Failo_rusiavimas (vector <studentas> grupe)
+{
+    vector <studentas> gudruciai, neismaneliai;
+    for (auto &a: grupe)
+    {
+        if (a.rez >= 5) gudruciai.push_back(a);
+        else if (a.rez < 5) neismaneliai.push_back(a);
+    }
+    sort(gudruciai.begin(), gudruciai.end());
+    sort(neismaneliai.begin(), neismaneliai.end());
+    print_file("gudruciai.txt", gudruciai);
+    print_file("neismaneliai.txt", neismaneliai);
+}
+
+
+void print_file(string pavadinimas, vector<studentas> studentai)
 {
     ofstream g(pavadinimas);
     g<<"Pavarde             Vardas              Galutinis (Vid.)"<<endl;
-    g<<"---------------------------------------------------------"<<endl;
     for (auto &a: studentai)
         g<<left<<setw(20)<<a.pavarde<<setw(20)<<a.vardas<<setw(5)<<fixed<<setprecision(2)<<a.rez<<endl;
 }
-
 
 
 

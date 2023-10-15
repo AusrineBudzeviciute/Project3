@@ -1,63 +1,26 @@
 #include "my_lib.h"
 
+
 int main()
 {
     studentas stud;
     vector <studentas> grupe;
-    char ivedimas1;
-    cout<<"Iveskite 'f', jeigu norite nuskaityti faila; iveskite 'a',jeigu duomenys bus ivedami; iveskite 'k', jeigu failas generuojamas automatiskai:";
+    int ivedimas1;
+    cout<<"Iveskite: '1' - failo nuskaitymui; '2' - duomenu ivedimui; '3' - failo generavimui: ";
     cin>>ivedimas1;
 
 try{
-    if (ivedimas1 == 'f')
+    if (ivedimas1 == 1)
     {
-        string pavadinimas;
-        cout<<"Iveskite tekstinio failo pavadinima: ";
-        cin>>pavadinimas;
-
-        ifstream failas(pavadinimas);
-        if(failas.fail())
-        {
-            cout<<"Failo atidarymo klaida."<<endl;
-            return 1;
-        }
-
-        string antraste;
-        for (int i = 0; i<1; i++) getline(failas,antraste);
-
-        istringstream iss(antraste);
-        string namudarbas;
-        int sk = 0;
-
-        while (iss >> namudarbas)
-        {
-            if (namudarbas.substr(0, 2) == "ND") sk++;
-        }
-
-        while(failas >> stud.vardas >> stud.pavarde)
-        {
-            for(int i=0; i<sk; i++)
-            {
-                int paz;
-                if(!(failas>>paz)) throw invalid_argument("Netinkamas pazymys faile.");
-                if (paz<=0 || paz>10) throw invalid_argument("Netinkamas pazymys faile.");
-
-                stud.pazymiai.push_back(paz);
-            }
-        failas >> stud.egz;
-        stud.rez = mean(stud.pazymiai, stud.egz);
-        stud.mediana = median(stud.pazymiai);
-        grupe.push_back(stud);
-        stud.pazymiai.clear();
-        }
-
-        sort(grupe.begin(), grupe.end());
-        print_mean_median(grupe);
-        failas.close();
+        string pav;
+        cout<<"Iveskite failo pavadinima: ";
+        cin>>pav;
+        Failo_nuskaitymas(pav, stud, grupe);
+        Failo_rusiavimas(grupe);
     }
 
 
-    else if (ivedimas1=='a')
+    else if (ivedimas1==2)
     {
         int n;
         cout<<"Iveskite, kiek studentu yra sarase:"<<endl;
@@ -69,10 +32,10 @@ try{
             cout<<"Iveskite varda ir pavarde: "<<endl;
             cin>>stud.vardas>>stud.pavarde;
 
-            char duomived;
-            cout<<"Iveskite '+', jeigu norite, kad studento pazymius bei egzamino rezultatus sugeneruotu automatiskai.Iveskite '-', jeigu juos ivesite patys: ";
-            cin>>duomived;
-            if (duomived == '+')
+            char ivedimas2;
+            cout<<"Iveskite: '+' - duomenu generavimui; '-' - duomenu ivedimui: ";
+            cin>>ivedimas2;
+            if (ivedimas2 == '+')
             {
                 int skaicius;
                 cout<<"Iveskite, kiek pazymiu generuojama: ";
@@ -88,7 +51,7 @@ try{
                 stud.pazymiai.clear();
             }
 
-            else if (duomived == '-')
+            else if (ivedimas2 == '-')
             {
                 int p;
                 cout<<"Iveskite pazymi (0 zymi pazymiu ivedimo pabaiga): ";
@@ -116,19 +79,20 @@ try{
             }
         }
         sort(grupe.begin(), grupe.end());
-        char isvedimas;
-        cout<<"Iveskite 'V', jeigu norite matyti vidurki, iveskite 'M', jeigu norite matyti mediana: ";
-        cin>>isvedimas;
-        if (isvedimas == 'V') print_mean(grupe);
+        char ivedimas3;
+        cout<<"Iveskite: 'V' - vidurkio isvedimui; 'M' - medianos isvedimui: ";
+        cin>>ivedimas3;
+        if (ivedimas3 == 'V') print_mean(grupe);
         else print_median(grupe);
     }
 
-    else
+    else if (ivedimas1 == 3)
     {
-        Failo_kurimas(100);
-        darbas_su_failu("studentai.txt", stud);
+        int studentusk;
+        cout<<"Iveskite, kiek studentu generuojama: ";
+        cin>>studentusk;
+        Failo_kurimas(studentusk);
     }
-
 
 
 }

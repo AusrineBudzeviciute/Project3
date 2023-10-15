@@ -8,6 +8,7 @@
 #include <cstdlib>
 #include <fstream>
 #include <stdexcept>
+#include <algorithm>
 
 
 using std::cout;
@@ -27,20 +28,34 @@ using std::exception;
 using std::ofstream;
 using std::to_string;
 
+
 struct studentas {
         string vardas, pavarde;
         vector <int> pazymiai;
         int egz;
         float rez, mediana;
 
-        bool operator<(const studentas& o) const
-        {
-            return pavarde < o.pavarde;
-        }
-    };
 
 
 
+};
+
+
+/*
+
+    {
+        if(pasirinkimas == 1) return o1.vardas < o2.vardas;
+
+        else if (pasirinkimas == 2) return o1.pavarde < o2.pavarde;
+
+        else if (pasirinkimas == 3) return o1.egz < o2.egz;
+    }
+    */
+
+
+
+
+int rusiavimui();
 int generate_random();
 float median(vector<int> pazymiai);
 float mean(vector<int> pazymiai, int egzaminas);
@@ -48,9 +63,12 @@ void print_mean(vector<studentas> grupe);
 void print_median(vector<studentas> grupe);
 void print_mean_median (vector<studentas> grupe);
 void tikrinimas(int& x);
+void Failo_nuskaitymas (string pavadinimas, struct studentas stud, vector <studentas> &grupe);
 void Failo_kurimas (int studentusk);
 void darbas_su_failu(string pavadinimas, struct studentas stud);
-void print_studentai(string pavadinimas, vector<studentas> studentai);
+void print_file(string pavadinimas, vector<studentas> studentai);
+void Failo_rusiavimas (vector <studentas> grupe);
+
 
 
 
