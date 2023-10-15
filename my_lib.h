@@ -4,10 +4,11 @@
 #include <vector>
 #include <cstdio>
 #include <bits/stdc++.h>
-#include <ctime>
 #include <cstdlib>
 #include <fstream>
 #include <stdexcept>
+#include <chrono>
+#include <random>
 #include <algorithm>
 
 
@@ -27,7 +28,7 @@ using std::cerr;
 using std::exception;
 using std::ofstream;
 using std::to_string;
-
+using namespace std::chrono;
 
 struct studentas {
         string vardas, pavarde;

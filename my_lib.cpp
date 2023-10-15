@@ -120,8 +120,8 @@ void Failo_kurimas (int studentusk)
     ofstream file ("studentai"+to_string(studentusk)+".txt");
     if (!file){cerr<<"Failo klaida."<<endl;}
 
-    file << "Vardas              Pavarde             ND1  ND2  ND3  ND4  ND5  egz"<<endl;
     srand(time(0));
+    file << "Vardas              Pavarde             ND1  ND2  ND3  ND4  ND5  egz"<<endl;
     for (int i = 1; i <= studentusk; i++)
     {
         file <<left<<setw(20)<<"Vardas"+to_string(i)<<left<<setw(20)<< "Pavarde"+to_string(i);
