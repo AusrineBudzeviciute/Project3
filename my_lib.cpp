@@ -1,5 +1,5 @@
 #include "my_lib.h"
-//
+
 
 int generate_random() {
     static std::mt19937 mt(std::chrono::high_resolution_clock::now().time_since_epoch().count());
