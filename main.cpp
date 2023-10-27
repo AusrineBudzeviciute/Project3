@@ -87,6 +87,13 @@ try{
         else print_median(kursas);
     }
 
+    else if (ivedimas1 == 3)
+    {
+        int studentusk;
+        cout<<"Iveskite, kiek studentu generuojama: ";
+        cin>>studentusk;
+        Failo_kurimas(studentusk);
+    }
 }
 
 catch (const exception& e) {
