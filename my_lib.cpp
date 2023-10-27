@@ -1,10 +1,10 @@
-
 #include "my_lib.h"
+//
 
-int generate_random()
-{
-    srand(time(0));
-    return (rand()%10)+1;
+int generate_random() {
+    static std::mt19937 mt(std::chrono::high_resolution_clock::now().time_since_epoch().count());
+    std::uniform_int_distribution<int> dist(1, 10);
+    return dist(mt);
 }
 
 int rusiavimui()
@@ -15,20 +15,23 @@ int rusiavimui()
     return pasirinkimas;
 }
 
-
-float median(vector<int> pazymiai)
+float median(list<int> pazymiai)
 {
-    float mediana;
-    sort(pazymiai.begin(), pazymiai.end());
-    if (pazymiai.size()%2 == 0)
-        mediana = (pazymiai[pazymiai.size()/2] + pazymiai[(pazymiai.size()/2)-1])/2.0;
+    pazymiai.sort();
+    int size = pazymiai.size();
+    auto p = pazymiai.begin();
+    advance(p, size/2);
+    if (size%2 == 0){
+        int med1 = *p;
+        --p;
+        int med2 = *p;
+        return static_cast<float>(med1 + med2)/2;
+    }
     else
-        mediana = pazymiai[(pazymiai.size()/2)];
-    return mediana;
+        return static_cast<float>(*p);
 }
 
-
-float mean(vector<int> pazymiai, int egzaminas)
+float mean(list<int> pazymiai, int egzaminas)
 {
     float suma=0, rezultatas;
     for (auto &a: pazymiai)
@@ -37,27 +40,27 @@ float mean(vector<int> pazymiai, int egzaminas)
     return rezultatas;
 }
 
-void print_mean(vector<studentas> grupe)
+void print_mean(list<stipendininkas> kursas)
 {
     cout<<"Pavarde             "<<"Vardas              "<<"Galutinis (Vid.)"<<endl;
     cout<<"---------------------------------------------------------"<<endl;
-    for (auto &b: grupe)
-        cout<<left<<setw(20)<<b.pavarde<<setw(20)<<b.vardas<<setw(5)<<fixed<<setprecision(2)<<b.rez<<endl;
+    for (auto &a: kursas)
+        cout<<left<<setw(20)<<a.pavarde<<setw(20)<<a.vardas<<setw(5)<<fixed<<setprecision(2)<<a.rez<<endl;
 }
 
-void print_median(vector<studentas> grupe)
+void print_median(list<stipendininkas> kursas)
 {
     cout<<"Pavarde             "<<"Vardas              "<<"Galutinis (Med.)"<<endl;
     cout<<"---------------------------------------------------------"<<endl;
-    for (auto &c: grupe)
-        cout<<left<<setw(20)<<c.pavarde<<setw(20)<<c.vardas<<setw(5)<<fixed<<setprecision(2)<<c.mediana<<endl;
+    for (auto &a: kursas)
+        cout<<left<<setw(20)<<a.pavarde<<setw(20)<<a.vardas<<setw(5)<<fixed<<setprecision(2)<<a.mediana<<endl;
 }
 
-void print_mean_median (vector<studentas> grupe)
+void print_mean_median (list<stipendininkas> kursas)
 {
     cout<<"Pavarde             Vardas              Galutinis (Vid.)    Galutinis (Med.)"<<endl;
     cout<<"------------------------------------------------------------------------"<<endl;
-    for (auto &a: grupe)
+    for (auto &a: kursas)
         cout<<left<<setw(20)<<a.pavarde<<setw(20)<<a.vardas<<setw(20)<<fixed<<setprecision(2)<<a.rez<<setw(5)<<a.mediana<<endl;
 }
 
@@ -79,7 +82,7 @@ void tikrinimas(int& x)
 }
 
 
-void Failo_nuskaitymas (string pavadinimas, struct studentas stud, vector <studentas> &grupe)
+void Failo_nuskaitymas (string pavadinimas, struct stipendininkas stip, list <stipendininkas> &kursas)
 {
     auto start = std::chrono::high_resolution_clock::now();
     ifstream failas(pavadinimas);
@@ -97,20 +100,20 @@ void Failo_nuskaitymas (string pavadinimas, struct studentas stud, vector <stude
         if (namudarbas.substr(0, 2) == "ND") sk++;
     }
 
-    while(failas >> stud.vardas >> stud.pavarde)
+    while(failas >> stip.vardas >> stip.pavarde)
     {
         for(int i=0; i<sk; i++)
         {
             int paz;
             if(!(failas>>paz)) throw invalid_argument("Netinkamas pazymys faile.");
             if (paz<=0 || paz>10) throw invalid_argument("Netinkamas pazymys faile.");
-            stud.pazymiai.push_back(paz);
+            stip.pazymiai.push_back(paz);
         }
-        failas >> stud.egz;
-        stud.rez = mean(stud.pazymiai, stud.egz);
-        stud.mediana = median(stud.pazymiai);
-        grupe.push_back(stud);
-        stud.pazymiai.clear();
+        failas >> stip.egz;
+        stip.rez = mean(stip.pazymiai, stip.egz);
+        stip.mediana = median(stip.pazymiai);
+        kursas.push_back(stip);
+        stip.pazymiai.clear();
     }
     failas.close();
     auto end = std::chrono::high_resolution_clock::now();
@@ -125,16 +128,15 @@ void Failo_kurimas (int studentusk)
     ofstream file ("studentai"+to_string(studentusk)+".txt");
     if (!file){cerr<<"Failo klaida."<<endl;}
 
-    srand(time(0));
     file << "Vardas              Pavarde             ND1  ND2  ND3  ND4  ND5  egz"<<endl;
     for (int i = 1; i <= studentusk; i++)
     {
         file <<left<<setw(20)<<"Vardas"+to_string(i)<<left<<setw(20)<< "Pavarde"+to_string(i);
 
         for (int i = 1; i < 6; i++){
-            file <<left<<setw(5)<< (rand()%10)+1;
+            file <<left<<setw(5)<< generate_random();
         }
-        file<<left<< setw(5) << (rand()%10)+1 <<endl;
+        file<<left<< setw(5) << generate_random() <<endl;
     }
     file.close();
     auto end = std::chrono::high_resolution_clock::now();
@@ -142,11 +144,11 @@ void Failo_kurimas (int studentusk)
     std::cout << "Failo kurimas uztruko: "<< diff.count() << " s\n";
 }
 
-void Failo_rusiavimas (vector <studentas> grupe)
+void Failo_rusiavimas (list <stipendininkas> kursas)
 {
-    vector <studentas> gudruciai, neismaneliai;
+    list <stipendininkas> gudruciai, neismaneliai;
     auto start = std::chrono::high_resolution_clock::now();
-    for (auto &a: grupe)
+    for (auto &a: kursas)
     {
         if (a.rez >= 5) gudruciai.push_back(a);
         else if (a.rez < 5) neismaneliai.push_back(a);
@@ -170,7 +172,7 @@ void Failo_rusiavimas (vector <studentas> grupe)
 }
 
 
-void print_file(string pavadinimas, vector<studentas> studentai)
+void print_file(string pavadinimas, list<stipendininkas> studentai)
 {
     ofstream g(pavadinimas);
     g<<"Pavarde             Vardas              Galutinis (Vid.)"<<endl;
