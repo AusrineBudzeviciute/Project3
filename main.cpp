@@ -1,6 +1,5 @@
 #include "my_lib.h"
 
-
 int main()
 {
 try{
@@ -85,6 +84,8 @@ try{
         cin>>ivedimas3;
         if (ivedimas3 == 'V') print_mean(kursas);
         else print_median(kursas);
+        cout<<"Grupes objekto saugojimo atmintyje adresas: "<<&kursas<<endl;
+        for(auto &stip: kursas) {cout<<"Studento objekto saugojimo atmintyje adresas: "<<&stip<<endl;}
     }
 
     else if (ivedimas1 == 3)
