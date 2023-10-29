@@ -2,6 +2,8 @@
 
 Programa nuskaito duomenis iš failo, automatiškai sugeneruoja duomenis arba leidžia juos suvesti vartotojui. Skaičiuojami ir išvedami (pasirinktinai) mediana arba vidurkis. Programa taip pat matuoja laiką: failų generavimo, nuskaitymo, rūšiavimo (į 'gudručius' ir 'neišmanėlius') bei šių gautų failų kūrimo laiką.
 
+**Analizė.** _eiga_
+
 Analizei naudoti 5 failai, turintys skirtingą studentų skaičių: 1000, 10000, 100000, 1000000, 10000000. Šių failų generavimas atitinkamai užtruko 0,02s ; 0,06s ; 0,5s ; 5,15s ; 45,2s . Sugeneruoti failai buvo testuojami 5 kartus ir imamas matavimų vidurkis. Gauti rezultatai lyginami su antros versijos matavimais: šiuo atveju naudojamas list konteineris lyginamas su ankstesnės versijos vector konteineriu.
 
 **Analizė.** _vector konteinerio rezultatai_
@@ -22,7 +24,9 @@ Analizei naudoti 5 failai, turintys skirtingą studentų skaičių: 1000, 10000,
 |  Gudručių failo spausdinimo vidutinis laikas  | 0,01 s  |  0,03 s | 0,28 s | 2,39 s  |  24,68 s  |
 |  **Bendras laikas**                             | **0,02 s** |  **0,13 s** | **1,28 s** | **10,18 s** |  **115,13 s** |
 
-**Palyginimas:** Didėjant studentų skaičiui (failų eilučių skaičiui), programa veikia sparčiau su vector konteineriu.
+**Analizė.** _palyginimas_
+
+Didėjant studentų skaičiui (failų eilučių skaičiui), programa veikia sparčiau su vector konteineriu.
 
 **Testavimo sistemos parametrai:**
 
