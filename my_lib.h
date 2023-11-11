@@ -32,6 +32,21 @@ using std::ofstream;
 using std::to_string;
 using namespace std::chrono;
 
+struct studentas {
+        string vardas, pavarde;
+        vector <int> pazymiai;
+        int egz;
+        float rez, mediana;
+
+        int x;
+        bool operator<(const studentas& o) const{
+            if(x == 1) return vardas < o.vardas;
+            else if (x == 2) return pavarde < o.pavarde;
+            else if (x == 3) return rez < o.rez;
+            else if (x == 4) return o.rez < rez;
+        }
+};
+
 struct stipendininkas {
     string vardas, pavarde;
     list<int> pazymiai;
@@ -49,23 +64,29 @@ struct stipendininkas {
 
 int generate_random();
 int rusiavimui();
-float median(list<int> pazymiai);
-float mean(list<int> pazymiai, int egzaminas);
-void print_mean(list<stipendininkas> kursas);
-void print_median(list<stipendininkas> kursas);
-void print_mean_median (list<stipendininkas> kursas);
 void tikrinimas(int& x);
-void Failo_nuskaitymas (string pavadinimas, struct stipendininkas stip, list <stipendininkas> &kursas);
 void Failo_kurimas (int studentusk);
-void Failo_rusiavimas (list <stipendininkas> kursas);
-void print_file(string pavadinimas, list<stipendininkas> studentai);
 
+/* VEKTORIUS */
+int vektorius();
+float median(vector<int> pazymiai);
+float mean(vector<int> pazymiai, int egzaminas);
+void print_mean(vector<studentas> grupe);
+void print_median(vector<studentas> grupe);
+void print_mean_median (vector<studentas> grupe);
+void Failo_nuskaitymas (string pavadinimas, struct studentas stud, vector <studentas> &grupe);
+void Failo_rusiavimas1 (vector <studentas> grupe);
+void Failo_rusiavimas2 (vector<studentas> &grupe);
+void print_file(string pavadinimas, vector<studentas> studentai);
 
-
-
-
-
-
-
-
-
+/* LISTAS */
+int listas();
+float median_l(list<int> pazymiai);
+float mean_l(list<int> pazymiai, int egzaminas);
+void print_mean_l(list<stipendininkas> kursas);
+void print_median_l(list<stipendininkas> kursas);
+void print_mean_median_l (list<stipendininkas> kursas);
+void Failo_nuskaitymas_l (string pavadinimas, struct stipendininkas stip, list <stipendininkas> &kursas);
+void Failo_rusiavimas1_l (list <stipendininkas> kursas);
+void Failo_rusiavimas2_l (list<stipendininkas> kursas);
+void print_file_l(string pavadinimas, list<stipendininkas> studentai);
