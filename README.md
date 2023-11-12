@@ -46,6 +46,10 @@ Analizei naudoti 5 failai, turintys skirtingą studentų skaičių: 1000, 10000,
 
 Didėjant studentų skaičiui (failų eilučių skaičiui), programa veikia sparčiau su vector konteineriu. Tiek minėto vector konteinerio, tiek list konteinerio atveju programa efektyviausia naudojant 3 rūšiavimo strategiją. Išvada: vector konteineris su 3 strategija veikia greičiausiai.
 
+**ĮDIEGIMO, NAUDOJIMOSI INSTRUKCIJA**
+
+Failai sukeliami į aplanką ir išskaidomi į dar 2 atskirus aplankus: 'src' aplanke patalpinami .cpp failai bei (jeigu yra poreikis) .txt failai; 'include' aplanke patalpinami .h failai; likę failai paliekami pagrindiniame aplanke. Atidaromas terminalas ir jame pasiekiamas sukurtas aplankas. Suvedama '.\RUNMEE.bat' ir programa pasileidžia.
+
 **Testavimo sistemos parametrai:**
 
 CPU: Intel(R) Core(TM) i5-10300H CPU @ 2.50GHz, 2496 Mhz, 4 Core(s), 8 Logical Processor(s)
