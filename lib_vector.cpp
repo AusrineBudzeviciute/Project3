@@ -111,15 +111,14 @@ void Failo_rusiavimas1 (vector <studentas> grupe)
     std::cout << "Neismaneliu failo kurimas uztruko: "<< diff3.count() << " s\n";
 }
 
-void Failo_rusiavimas2 (vector<studentas> &grupe)
+void Failo_rusiavimas2 (vector<studentas> grupe)
 {
     vector<studentas> neismaneliai;
 
+    auto start = std::chrono::high_resolution_clock::now();
     for (auto &a: grupe)
         a.x = 4;
     sort(grupe.begin(), grupe.end());
-
-    auto start = std::chrono::high_resolution_clock::now();
     while (!grupe.empty() && grupe.back().rez < 5)
     {
         neismaneliai.push_back(grupe.back());
@@ -139,6 +138,43 @@ void Failo_rusiavimas2 (vector<studentas> &grupe)
 
     auto start2 = std::chrono::high_resolution_clock::now();
     print_file("gudruciai.txt", grupe);
+    auto end2 = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> diff2 = end2-start2;
+    std::cout << "Gudruciu failo kurimas uztruko: "<< diff2.count() << " s\n";
+
+    auto start3 = std::chrono::high_resolution_clock::now();
+    print_file("neismaneliai.txt", neismaneliai);
+    auto end3 = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> diff3 = end3-start3;
+    std::cout << "Neismaneliu failo kurimas uztruko: "<< diff3.count() << " s\n";
+}
+
+void Failo_rusiavimas3 (vector<studentas> grupe)
+{
+    vector<studentas> neismaneliai, gudruciai;
+
+    auto start = std::chrono::high_resolution_clock::now();
+
+    auto partitionPoint = std::partition(grupe.begin(), grupe.end(), [](const auto& a) {
+    return a.rez < 5;});
+    gudruciai.insert(gudruciai.end(), partitionPoint, grupe.end());
+    neismaneliai.insert(neismaneliai.end(), grupe.begin(), partitionPoint);
+    grupe.erase(partitionPoint, grupe.end());
+
+    auto end = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> diff = end-start;
+    std::cout << "Failo rusiavimas uztruko: "<< diff.count() << " s\n";
+
+    int pasirinkimas = rusiavimui();
+    for (auto &a: gudruciai)
+        a.x = pasirinkimas;
+    sort(gudruciai.begin(), gudruciai.end());
+    for (auto &b: neismaneliai)
+        b.x = pasirinkimas;
+    sort(neismaneliai.begin(), neismaneliai.end());
+
+    auto start2 = std::chrono::high_resolution_clock::now();
+    print_file("gudruciai.txt", gudruciai);
     auto end2 = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> diff2 = end2-start2;
     std::cout << "Gudruciu failo kurimas uztruko: "<< diff2.count() << " s\n";
