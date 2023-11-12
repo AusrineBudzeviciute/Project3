@@ -3,7 +3,7 @@
 #include <string>
 #include <vector>
 #include <cstdio>
-#include <bits/stdc++.h>
+#include <list>
 #include <cstdlib>
 #include <fstream>
 #include <stdexcept>
@@ -11,6 +11,9 @@
 #include <random>
 #include <ctime>
 #include <algorithm>
+#include <sstream>
+#include <typeinfo>
+#include <type_traits>
 
 
 using std::cout;
