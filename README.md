@@ -1,4 +1,4 @@
-# v03. Pirma užduotėlė
+# v1.0 Pirma užduotėlė
 
 Programa nuskaito duomenis iš failo, automatiškai sugeneruoja duomenis arba leidžia juos suvesti vartotojui. Skaičiuojami ir išvedami (pasirinktinai) mediana arba vidurkis. Programa taip pat matuoja laiką: failų generavimo, nuskaitymo, rūšiavimo (į 'gudručius' ir 'neišmanėlius') bei šių gautų failų kūrimo laiką. Sukurta galimybė pasirinkti, kokiame konteineryje talpinami duomenys (list ar vector), bei, kokia strategija vykdomas rūšiavimas (skaidymas).
 
