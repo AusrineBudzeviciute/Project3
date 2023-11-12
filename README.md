@@ -1,12 +1,12 @@
 # v03. Pirma užduotėlė
 
-Programa nuskaito duomenis iš failo, automatiškai sugeneruoja duomenis arba leidžia juos suvesti vartotojui. Skaičiuojami ir išvedami (pasirinktinai) mediana arba vidurkis. Programa taip pat matuoja laiką: failų generavimo, nuskaitymo, rūšiavimo (į 'gudručius' ir 'neišmanėlius') bei šių gautų failų kūrimo laiką.
+Programa nuskaito duomenis iš failo, automatiškai sugeneruoja duomenis arba leidžia juos suvesti vartotojui. Skaičiuojami ir išvedami (pasirinktinai) mediana arba vidurkis. Programa taip pat matuoja laiką: failų generavimo, nuskaitymo, rūšiavimo (į 'gudručius' ir 'neišmanėlius') bei šių gautų failų kūrimo laiką. Sukurta galimybė pasirinkti, kokiame konteineryje talpinami duomenys (list ar vector), bei, kokia strategija vykdomas rūšiavimas (skaidymas).
 
-**Analizė.** _eiga_
+**ANALIZĖ.** 
 
-Analizei naudoti 5 failai, turintys skirtingą studentų skaičių: 1000, 10000, 100000, 1000000, 10000000. Šių failų generavimas atitinkamai užtruko 0,02s ; 0,06s ; 0,5s ; 5,15s ; 45,2s . Sugeneruoti failai buvo testuojami 5 kartus ir imamas matavimų vidurkis. Gauti rezultatai lyginami su antros versijos matavimais: šiuo atveju naudojamas list konteineris lyginamas su ankstesnės versijos vector konteineriu.
+Analizei naudoti 5 failai, turintys skirtingą studentų skaičių: 1000, 10000, 100000, 1000000, 10000000. Šių failų generavimas atitinkamai užtruko 0,02s ; 0,06s ; 0,5s ; 5,15s ; 45,2s . Sugeneruoti failai buvo testuojami 5 kartus ir imamas matavimų vidurkis. Testavimas vykdomas keliais skiritingais scenarijais: naudojant 2 skirtingus konteinerius (list arba vector) bei keičiant failo rūšiavimo (skaidymo) metodą (3 skirtingos strategijos).
 
-**Analizė.** _vector konteinerio rezultatai_
+**_vector konteinerio rezultatai_**
 |                                               |  1000   |  10000  | 100000 | 1000000 | 10000000  |
 | --------------------------------------------- |:-------:|:-------:|:------:|:-------:|:---------:|
 |  Failo nuskaitymo vidutinis laikas            | 0,01 s  |  0,03 s | 0,19 s | 1,85 s  |  19,92 s  |
@@ -15,7 +15,7 @@ Analizei naudoti 5 failai, turintys skirtingą studentų skaičių: 1000, 10000,
 |  Gudručių failo spausdinimo vidutinis laikas  | 0,01 s  |  0,03 s | 0,19 s | 1,89 s  |  19,09 s  |
 |  **Bendras laikas**                             | **0,02 s** |  **0,09 s** | **0,54 s** | **5,4 s** |  **55 s** |
 
-**Analizė.** _list konteinerio rezultatai_
+**_list konteinerio rezultatai_**
 |                                               |  1000   |  10000  | 100000 | 1000000 | 10000000  |
 | --------------------------------------------- |:-------:|:-------:|:------:|:-------:|:---------:|
 |  Failo nuskaitymo vidutinis laikas            | 0,02 s  |  0,07 s | 0,71 s | 5,37 s  |  54,05 s  |
@@ -24,9 +24,27 @@ Analizei naudoti 5 failai, turintys skirtingą studentų skaičių: 1000, 10000,
 |  Gudručių failo spausdinimo vidutinis laikas  | 0,01 s  |  0,03 s | 0,28 s | 2,39 s  |  24,68 s  |
 |  **Bendras laikas**                             | **0,02 s** |  **0,13 s** | **1,28 s** | **10,18 s** |  **115,13 s** |
 
-**Analizė.** _palyginimas_
+**Strategijos.** _vector konteineris_
+|                | 1 strategija | 2 strategija | 3 strategija |
+| -------------- |:------------:|:------------:|:------------:|
+|   1000         |     0 s      |     0 s      |     0 s      |
+|   10000        |     0,01 s   |     0,01 s   |     0 s      |
+|   100000       |     0,03 s   |     0,02 s   |     0,03 s   |
+|   1000000      |     0,29 s   |     2,11 s   |     0,24 s   |
+|   10000000     |     2,72 s   |     24,59 s  |     2,62 s   |
 
-Didėjant studentų skaičiui (failų eilučių skaičiui), programa veikia sparčiau su vector konteineriu.
+**Strategijos.** _list konteineris_
+|                | 1 strategija | 2 strategija | 3 strategija |
+| -------------- |:------------:|:------------:|:------------:|
+|   1000         |     0 s      |     0 s      |     0 s      |
+|   10000        |     0,02 s   |     0 s      |     0,01 s   |
+|   100000       |     0,08 s   |     0,12 s   |     0,12 s   |
+|   1000000      |     0,72 s   |     1,52 s   |     0,99 s   |
+|   10000000     |     17,94 s  |     19,22 s  |     14,77 s  |
+
+**ANALIZĖS REZULTATAI**
+
+Didėjant studentų skaičiui (failų eilučių skaičiui), programa veikia sparčiau su vector konteineriu. Tiek minėto vector konteinerio, tiek list konteinerio atveju programa efektyviausia naudojant 3 rūšiavimo strategiją. Išvada: vector konteineris su 3 strategija veikia greičiausiai.
 
 **Testavimo sistemos parametrai:**
 
