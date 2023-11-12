@@ -15,7 +15,21 @@ try{
         cout<<"Iveskite failo pavadinima: ";
         cin>>pav;
         Failo_nuskaitymas(pav, stud, grupe);
-        Failo_rusiavimas2(grupe);
+        int strategija;
+        cout<<"Iveskite, kuri strategija bus tikrinama (1, 2, 3): ";
+        cin>>strategija;
+        if (strategija == 1)
+        {
+            int pasirinkimas = rusiavimui();
+            for (auto &a: grupe)
+                a.x = pasirinkimas;
+            sort(grupe.begin(), grupe.end());
+            Failo_rusiavimas1(grupe);
+        }
+        else if (strategija == 2)
+            Failo_rusiavimas2(grupe);
+        else if (strategija == 3)
+            Failo_rusiavimas3(grupe);
     }
 
 
