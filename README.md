@@ -1,10 +1,11 @@
-# v1.0 Pirma užduotėlė
+# v1.1 Antra užduotėlė
 
-Programa nuskaito duomenis iš failo, automatiškai sugeneruoja duomenis arba leidžia juos suvesti vartotojui. Skaičiuojami ir išvedami (pasirinktinai) mediana arba vidurkis. Programa taip pat matuoja laiką: failų generavimo, nuskaitymo, rūšiavimo (į 'gudručius' ir 'neišmanėlius') bei šių gautų failų kūrimo laiką. Sukurta galimybė pasirinkti, kokiame konteineryje talpinami duomenys (list ar vector), bei, kokia strategija vykdomas rūšiavimas (skaidymas).
+Programa sukurta pirmos užduoties pagrindu, tačiau vietoje struktūros, naudojama klasė; palikta greičiausiai veikianti rūšiavimo strategija: vector konteineris + 3 strategija.
 
 **ANALIZĖ.** 
 
-Analizei naudoti 5 failai, turintys skirtingą studentų skaičių: 1000, 10000, 100000, 1000000, 10000000. Šių failų generavimas atitinkamai užtruko 0,02s ; 0,06s ; 0,5s ; 5,15s ; 45,2s . Sugeneruoti failai buvo testuojami 5 kartus ir imamas matavimų vidurkis. Testavimas vykdomas keliais skiritingais scenarijais: naudojant 2 skirtingus konteinerius (list arba vector) bei keičiant failo rūšiavimo (skaidymo) metodą (3 skirtingos strategijos).
+Analizei naudoti 2 failai, turintys skirtingą studentų skaičių: 100000, 1000000. Sugeneruoti failai buvo testuojami 5 kartus ir imamas matavimų vidurkis. Testavimas vykdomas keliais skiritingais scenarijais: 
+naudojant struktūrą arba klasę ir naudojant skirtingus flag'us (O1, O2, O3).
 
 **_vector konteinerio rezultatai_**
 |                                               |  1000   |  10000  | 100000 | 1000000 | 10000000  |
