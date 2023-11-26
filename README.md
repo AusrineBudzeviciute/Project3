@@ -7,45 +7,44 @@ Programa sukurta pirmos užduoties pagrindu, tačiau vietoje struktūros, naudoj
 Analizei naudoti 2 failai, turintys skirtingą studentų skaičių: 100000, 1000000. Sugeneruoti failai buvo testuojami 5 kartus ir imamas matavimų vidurkis. Testavimas vykdomas keliais skiritingais scenarijais: 
 naudojant struktūrą arba klasę ir naudojant skirtingus flag'us (O1, O2, O3).
 
-**_vector konteinerio rezultatai_**
-|                                               |  1000   |  10000  | 100000 | 1000000 | 10000000  |
-| --------------------------------------------- |:-------:|:-------:|:------:|:-------:|:---------:|
-|  Failo nuskaitymo vidutinis laikas            | 0,01 s  |  0,03 s | 0,19 s | 1,85 s  |  19,92 s  |
-|  Failo išrūšiavimo vidutinis laikas           | 0 s     |  0,01 s | 0,03 s | 0,29 s  |  2,72 s   |
-|  Neišmanėlių failo spausdinimo vidutinis laikas | 0 s     |  0,02 s | 0,13 s | 1,37 s  |  13,27 s  |
-|  Gudručių failo spausdinimo vidutinis laikas  | 0,01 s  |  0,03 s | 0,19 s | 1,89 s  |  19,09 s  |
-|  **Bendras laikas**                             | **0,02 s** |  **0,09 s** | **0,54 s** | **5,4 s** |  **55 s** |
+**_struktūros rezultatai_**                                                 
+|                                                 |  100000 | 1000000 |
+| ---------------------------------------------   |:-------:|:-------:|
+|  Failo nuskaitymo vidutinis laikas              | 0,27 s  |  1,83 s |
+|  Failo išrūšiavimo vidutinis laikas             | 0,03 s  |  0,33 s |
+|  Neišmanėlių failo spausdinimo vidutinis laikas | 0,19 s  |  2,2 s  |
+|  Gudručių failo spausdinimo vidutinis laikas    | 0,26 s  |  1,38 s |
 
-**_list konteinerio rezultatai_**
-|                                               |  1000   |  10000  | 100000 | 1000000 | 10000000  |
-| --------------------------------------------- |:-------:|:-------:|:------:|:-------:|:---------:|
-|  Failo nuskaitymo vidutinis laikas            | 0,02 s  |  0,07 s | 0,71 s | 5,37 s  |  54,05 s  |
-|  Failo išrūšiavimo vidutinis laikas           | 0 s     |  0,02 s | 0,08 s | 0,72 s  |  17,94 s   |
-|  Neišmanėlių failo spausdinimo vidutinis laikas | 0 s     |  0,02 s | 0,20 s | 1,70 s  |  18,46 s  |
-|  Gudručių failo spausdinimo vidutinis laikas  | 0,01 s  |  0,03 s | 0,28 s | 2,39 s  |  24,68 s  |
-|  **Bendras laikas**                             | **0,02 s** |  **0,13 s** | **1,28 s** | **10,18 s** |  **115,13 s** |
+**_klasės rezultatai_** 
+|                                                 |  100000 | 1000000 |
+| ---------------------------------------------   |:-------:|:-------:|
+|  Failo nuskaitymo vidutinis laikas              | 0,34 s  |  3,33 s |
+|  Failo išrūšiavimo vidutinis laikas             | 0,04 s  |  0,42 s |
+|  Neišmanėlių failo spausdinimo vidutinis laikas | 0,23 s  |  2,31 s |
+|  Gudručių failo spausdinimo vidutinis laikas    | 0,32 s  |  3,25 s |
 
-**Strategijos.** _vector konteineris_
-|                | 1 strategija | 2 strategija | 3 strategija |
-| -------------- |:------------:|:------------:|:------------:|
-|   1000         |     0 s      |     0 s      |     0 s      |
-|   10000        |     0,01 s   |     0,01 s   |     0 s      |
-|   100000       |     0,03 s   |     0,02 s   |     0,03 s   |
-|   1000000      |     0,29 s   |     2,11 s   |     0,24 s   |
-|   10000000     |     2,72 s   |     24,59 s  |     2,62 s   |
+**Išvada:** programa veikia greičiau naudojant struktūrą.
 
-**Strategijos.** _list konteineris_
-|                | 1 strategija | 2 strategija | 3 strategija |
-| -------------- |:------------:|:------------:|:------------:|
-|   1000         |     0 s      |     0 s      |     0 s      |
-|   10000        |     0,02 s   |     0 s      |     0,01 s   |
-|   100000       |     0,08 s   |     0,12 s   |     0,12 s   |
-|   1000000      |     0,72 s   |     1,52 s   |     0,99 s   |
-|   10000000     |     17,94 s  |     19,22 s  |     14,77 s  |
 
-**ANALIZĖS REZULTATAI**
+**_struktūra su skirtingais flag'ais_**
 
-Didėjant studentų skaičiui (failų eilučių skaičiui), programa veikia sparčiau su vector konteineriu. Tiek minėto vector konteinerio, tiek list konteinerio atveju programa efektyviausia naudojant 3 rūšiavimo strategiją. Išvada: vector konteineris su 3 strategija veikia greičiausiai.
+|                                                 |    O1   |  100000 | 1000000 |    O2   |  100000 | 1000000 |    O3   |  100000 | 1000000 |
+| ---------------------------------------------   |:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|
+|  Failo nuskaitymo vidutinis laikas              |         | 0,27 s  |  1,85 s |         | 0,28 s  | 1,84 s  |         | 0,28 s  | 1,83 s  |
+|  Failo išrūšiavimo vidutinis laikas             |         | 0,04 s  |  0,25 s |         | 0,03 s  | 0,25 s  |         | 0,03 s  | 0,24 s  |
+|  Neišmanėlių failo spausdinimo vidutinis laikas |         | 0,19 s  |  1,4 s  |         | 0,19 s  | 1,4 s   |         | 0,19 s  |  1,38 s |
+|  Gudručių failo spausdinimo vidutinis laikas    |         | 0,27 s  |  1,95 s |         | 0,27 s  | 2,1 s   |         | 0,27 s  |   2 s   |
+
+**_klasė su skirtingais flag'ais_**
+
+|                                                 |    O1   |  100000 | 1000000 |    O2   |  100000 | 1000000 |    O3   |  100000 | 1000000 |
+| ---------------------------------------------   |:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|
+|  Failo nuskaitymo vidutinis laikas              |         | 0,34 s  |  1,98 s |         | 0,29 s  | 1,98 s  |         | 0,21 s  | 1,98 s  |
+|  Failo išrūšiavimo vidutinis laikas             |         | 0,04 s  |  0,26 s |         | 0,03 s  | 0,25 s  |         | 0,02 s  | 0,25 s  |
+|  Neišmanėlių failo spausdinimo vidutinis laikas |         | 0,23 s  |  1,37 s |         | 0,2 s   | 1,37 s  |         | 0,13 s  |  1,38 s |
+|  Gudručių failo spausdinimo vidutinis laikas    |         | 0,31 s  |  1,9 s  |         | 0,28 s  | 1,9 s   |         | 0,19 s  |  1,9 s  |
+
+**Išvada:** tiek naudojant struktūrą, tiek klasę su skirtingais flag'ais, sparta skiriasi nežymiai; klasės atveju O3 flag'as veikia sparčiausiai.
 
 **ĮDIEGIMO, NAUDOJIMOSI INSTRUKCIJA**
 
