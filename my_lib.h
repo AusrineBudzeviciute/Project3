@@ -38,63 +38,46 @@ using std::stable_partition;
 using std::copy;
 
 
-struct studentas {
-        string vardas, pavarde;
-        vector <int> pazymiai;
-        int egz;
-        float rez, mediana;
+class studentas {
+    private:
+      string vardas_, pavarde_;
+      int egz_;
+      vector<int> pazymiai;
+      float rez_, mediana_;
 
-        int x;
-        bool operator<(const studentas& o) const{
-            if(x == 1) return vardas < o.vardas;
-            else if (x == 2) return pavarde < o.pavarde;
-            else if (x == 3) return rez < o.rez;
-            else if (x == 4) return o.rez < rez;
-        }
+    public:
+      studentas() : egz_(0) { }
+      ~studentas() {}
+      string getVardas() const { return vardas_; }
+      string getPavarde() const { return pavarde_; }
+      vector<int> getPazymiai() const { return pazymiai; }
+      int getEgz() const { return egz_; }
+      float getRez() const { return rez_; }
+      float getMediana() const { return mediana_; }
+
+      void setVardas(string);
+      void setPavarde(string);
+      void setEgz(int);
+      void setRez(float);
+      void setMediana(float);
+      void setPazymiai(int);
+      void clearPazymiai();
+
 };
 
-struct stipendininkas {
-    string vardas, pavarde;
-    list<int> pazymiai;
-    int egz;
-    float rez, mediana;
-    int x;
-
-    bool operator<(const stipendininkas& o) const {
-        if (x == 1) return vardas < o.vardas;
-        else if (x == 2) return pavarde < o.pavarde;
-        else if (x == 3) return rez < o.rez;
-    }
-};
-
+bool pagalVarda(const studentas&, const studentas&);
+bool pagalPavarde(const studentas&, const studentas&);
+bool pagalRezultata(const studentas&, const studentas&);
 
 int generate_random();
 int rusiavimui();
 void tikrinimas(int& x);
-void Failo_kurimas (int studentusk);
-
-/* VEKTORIUS */
-int vektorius();
 float median(vector<int> pazymiai);
 float mean(vector<int> pazymiai, int egzaminas);
 void print_mean(vector<studentas> grupe);
 void print_median(vector<studentas> grupe);
 void print_mean_median (vector<studentas> grupe);
-void Failo_nuskaitymas (string pavadinimas, struct studentas stud, vector <studentas> &grupe);
-void Failo_rusiavimas1 (vector <studentas> grupe);
-void Failo_rusiavimas2 (vector<studentas> grupe);
-void Failo_rusiavimas3 (vector<studentas> grupe);
+void Failo_nuskaitymas (string pavadinimas, studentas stud, vector <studentas> &grupe);
+void Failo_rusiavimas (vector<studentas> grupe);
 void print_file(string pavadinimas, vector<studentas> studentai);
 
-/* LISTAS */
-int listas();
-float median_l(list<int> pazymiai);
-float mean_l(list<int> pazymiai, int egzaminas);
-void print_mean_l(list<stipendininkas> kursas);
-void print_median_l(list<stipendininkas> kursas);
-void print_mean_median_l (list<stipendininkas> kursas);
-void Failo_nuskaitymas_l (string pavadinimas, struct stipendininkas stip, list <stipendininkas> &kursas);
-void Failo_rusiavimas1_l (list <stipendininkas> kursas);
-void Failo_rusiavimas2_l (list<stipendininkas> kursas);
-void Failo_rusiavimas3_l (list<stipendininkas> kursas);
-void print_file_l(string pavadinimas, list<stipendininkas> studentai);
