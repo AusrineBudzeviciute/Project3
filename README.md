@@ -30,10 +30,10 @@ naudojant struktūrą arba klasę ir naudojant skirtingus flag'us (O1, O2, O3).
 
 |                                                 |    O1   |  100000 | 1000000 |    O2   |  100000 | 1000000 |    O3   |  100000 | 1000000 |
 | ---------------------------------------------   |:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|
-|  Failo nuskaitymo vidutinis laikas              |         | 0,27 s  |  1,85 s |         | 0,28 s  | 1,84 s  |         | 0,28 s  | 1,83 s  |
-|  Failo išrūšiavimo vidutinis laikas             |         | 0,04 s  |  0,25 s |         | 0,03 s  | 0,25 s  |         | 0,03 s  | 0,24 s  |
-|  Neišmanėlių failo spausdinimo vidutinis laikas |         | 0,19 s  |  1,4 s  |         | 0,19 s  | 1,4 s   |         | 0,19 s  |  1,38 s |
-|  Gudručių failo spausdinimo vidutinis laikas    |         | 0,27 s  |  1,95 s |         | 0,27 s  | 2,1 s   |         | 0,27 s  |   2 s   |
+|  Failo nuskaitymo vidutinis laikas              |         | 0,18 s  |  1,85 s |         | 0,2 s   | 1,84 s  |         | 0,2 s   | 1,83 s  |
+|  Failo išrūšiavimo vidutinis laikas             |         | 0,03 s  |  0,25 s |         | 0,03 s  | 0,25 s  |         | 0,02 s  | 0,24 s  |
+|  Neišmanėlių failo spausdinimo vidutinis laikas |         | 0,13 s  |  1,4 s  |         | 0,13 s  | 1,4 s   |         | 0,13 s  |  1,4 s  |
+|  Gudručių failo spausdinimo vidutinis laikas    |         | 0,2 s   |  1,95 s |         | 0,18 s  | 1,4 s   |         | 0,19 s  |   2 s   |
 
 **_klasė su skirtingais flag'ais_**
 
