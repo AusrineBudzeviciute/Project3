@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <iomanip>
 #include <string>
@@ -36,6 +37,9 @@ using std::to_string;
 using namespace std::chrono;
 using std::stable_partition;
 using std::copy;
+using std::istream;
+using std::ostream;
+
 
 
 class studentas {
@@ -44,10 +48,35 @@ class studentas {
       int egz_;
       vector<int> pazymiai;
       float rez_, mediana_;
+      int* e;
 
     public:
-      studentas() : egz_(0) { }
-      ~studentas() {}
+      studentas(); //konstruktorius
+      ~studentas(); //destruktorius
+
+      //copy konstruktorius
+      studentas(const studentas& other);
+
+      //priskyrimo konstruktorius
+      studentas& operator=(const studentas& o);
+
+      //ivesties operatorius
+      friend istream& operator>>(istream& is, studentas &s)
+      {
+          string vardas, pavarde;
+          is>>vardas>>pavarde;
+          s.setVardas(vardas);
+          s.setPavarde(pavarde);
+          return is;
+      }
+
+      //isvesties operatorius
+      friend ostream& operator<<(ostream& os, const studentas &s)
+      {
+          os<<left<<setw(20)<<s.getPavarde()<<setw(20)<<s.getVardas();
+          return os;
+      }
+
       string getVardas() const { return vardas_; }
       string getPavarde() const { return pavarde_; }
       vector<int> getPazymiai() const { return pazymiai; }
@@ -64,6 +93,8 @@ class studentas {
       void clearPazymiai();
 
 };
+
+
 
 bool pagalVarda(const studentas&, const studentas&);
 bool pagalPavarde(const studentas&, const studentas&);
