@@ -1,27 +1,74 @@
 #include "my_lib.h"
 
-void studentas::setVardas(string vardas){
-    vardas_ = vardas;
-}
-void studentas::setPavarde(string pavarde){
-    pavarde_ = pavarde;
-}
-void studentas::setEgz(int egz) {
-    egz_ = egz;
-}
-void studentas::setRez(float rez) {
-    rez_ = rez;
-}
-void studentas::setMediana(float mediana){
-    mediana_ = mediana;
-}
-void studentas::setPazymiai(int paz)
+studentas::studentas() //konstruktorius
 {
-    pazymiai.push_back(paz);
+    egz_ = 0;
+    e = new int [egz_];
 }
+
+studentas::~studentas() //destruktorius
+{
+    delete[] e;
+    cout<<"Objektas pasalintas"<<endl;
+}
+
+//copy konstruktorius
+studentas::studentas(const studentas& o) {
+    vardas_ = o.vardas_;
+    pavarde_ = o.pavarde_;
+    egz_ = o.egz_;
+    pazymiai = o.pazymiai;
+    rez_ = o.rez_;
+    mediana_ = o.mediana_;
+    // Deep copy of the dynamic array elem
+    if (o.e != nullptr) {
+        e = new int[o.pazymiai.size()];
+        copy(o.e, o.e + o.pazymiai.size(), e);
+    } else {
+        e = nullptr;
+    }
+}
+//priskyrimo operatorius
+studentas& studentas::operator=(const studentas& o) {
+    if (this != &o) { // Avoid self-assignment
+        vardas_ = o.vardas_;
+        pavarde_ = o.pavarde_;
+        egz_ = o.egz_;
+        pazymiai = o.pazymiai;
+        rez_ = o.rez_;
+        mediana_ = o.mediana_;
+        // Deallocate existing dynamic array
+        delete[] e;
+        // Deep copy of the dynamic array elem
+        if (o.e != nullptr) {
+            e = new int[o.pazymiai.size()];
+            copy(o.e, o.e + o.pazymiai.size(), e);
+        } else {
+            e = nullptr;
+        }
+    }
+    return *this;
+}
+
+
+
+
+void studentas::setVardas(string vardas){
+    vardas_ = vardas;}
+void studentas::setPavarde(string pavarde){
+    pavarde_ = pavarde;}
+void studentas::setEgz(int egz) {
+    egz_ = egz;}
+void studentas::setRez(float rez) {
+    rez_ = rez;}
+void studentas::setMediana(float mediana){
+    mediana_ = mediana;}
+void studentas::setPazymiai(int paz){
+    pazymiai.push_back(paz);}
 void studentas::clearPazymiai(){
-    pazymiai.clear();
-}
+    pazymiai.clear();}
+
+
 
 float median(vector<int> pazymiai)
 {
