@@ -1,6 +1,17 @@
-# v1.1 Antra užduotėlė
+# v1.2 Antra užduotėlė
 
-Programa sukurta pirmos užduoties pagrindu, tačiau vietoje struktūros, naudojama klasė; palikta greičiausiai veikianti rūšiavimo strategija: vector konteineris + 3 strategija.
+Programa sukurta pirmos užduoties pagrindu, tačiau vietoje struktūros, naudojama klasė; palikta greičiausiai veikianti rūšiavimo strategija: vector konteineris + 3 strategija. Programoje realizuota „Rule of three“ ir įvesties/išvesties operatoriai. Sukurta galimybė pamatyti, kaip veikia minėti operatoriai, įvestis ir išvestis integruota į pačią programą: įvestis perdengta tiek rankiniu būdu vedamiems duomenims, tiek nuskaitant failą; išvestis perdengta į ekraną ir į failą spausdinamiems rezultatams.
+
+
+**Rule of three realizavimas**
+
+![image](https://github.com/AusrineBudzeviciute/Project2/assets/145910900/a72a862c-e4e6-480f-ae71-95dfe7bad001)
+
+![image](https://github.com/AusrineBudzeviciute/Project2/assets/145910900/afc4d8ad-5c2d-4aa2-a8e1-2de3b2388c78)
+
+**Įvesties/išvesties operatoriai**
+
+![image](https://github.com/AusrineBudzeviciute/Project2/assets/145910900/fc7bdaef-fa06-4b8b-9853-947a5a3f563a)
 
 **ANALIZĖ.** 
 
