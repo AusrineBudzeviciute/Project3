@@ -1,18 +1,15 @@
 #include "my_lib.h"
 
-studentas::studentas() //konstruktorius
-{
+ studentas::studentas(){ //konstruktorius
     egz_ = 0;
-    elem = new double [egz_];
-}
+    elem = new double [egz_];}
 
-studentas::~studentas() //destruktorius
-{
+ studentas::~studentas(){ //destruktorius
     delete[] elem;
     //cout<<"Objektas sunaikintas"<<endl;
 }
 
-studentas::studentas(const studentas& o) { //kopijavimo konstruktorius
+ studentas::studentas(const studentas& o) { //kopijavimo konstruktorius
     vardas_ = o.vardas_;
     pavarde_ = o.pavarde_;
     egz_ = o.egz_;
@@ -25,9 +22,9 @@ studentas::studentas(const studentas& o) { //kopijavimo konstruktorius
     } else {
         elem = nullptr;
     }
-}
+ }
 
-studentas& studentas::operator=(const studentas& o) { //priskyrimo operatorius
+ studentas& studentas::operator=(const studentas& o) { //priskyrimo operatorius
     if (this != &o) { //saves priskyrimo aptikimas
         vardas_ = o.vardas_;
         pavarde_ = o.pavarde_;
@@ -44,7 +41,7 @@ studentas& studentas::operator=(const studentas& o) { //priskyrimo operatorius
         }
     }
     return *this;
-}
+ }
 
 
 void studentas::setVardas(string vardas){
@@ -260,7 +257,7 @@ void print_file(string pavadinimas, vector<studentas> studentai)
     ofstream g(pavadinimas);
     g<<"Vardas              Pavarde             Galutinis (Vid.)"<<endl;
     for (auto &a: studentai)
-        g<<left<<a<<setw(5)<<fixed<<setprecision(2)<<a.getRez()<<endl;
+        g<<left<<a<<setw(5)<<fixed<<setprecision(2)<<a.getRez()<<endl; //persidengimas
 }
 
 

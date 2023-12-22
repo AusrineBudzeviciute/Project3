@@ -99,14 +99,12 @@ try{
 
     else if (ivedimas1==4)
     {
-        studentas pirmas;
-        pirmas.setVardas("Laima");
-        pirmas.setPavarde("Laiminga");
-        studentas antras{pirmas};
-        studentas trecias = pirmas;
-        cout<<pirmas<<endl;
-        cout<<antras<<endl;
-        cout<<trecias<<endl;
+        studentas s;
+        s.setVardas("Laima");
+        s.setPavarde("Laiminga");
+        studentas s_c{s};
+        studentas s_p = s;
+        cout<<"Sukurtas studentas:\n"<<s<<"\nNukopijuotas studentas:\n"<<s_c<<"\nPriskirtas studentas:\n"<<s_p<<endl;
     }
 
 

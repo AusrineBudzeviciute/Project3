@@ -55,22 +55,16 @@ class studentas {
       studentas(const studentas& o); //kopijavimo konstruktorius
       studentas& operator=(const studentas& o); //priskyrimo operatorius
 
-      //ivesties operatorius
-      friend istream& operator>>(istream& is, studentas &s)
-      {
+      friend istream& operator>>(istream& is, studentas &s){ //ivesties operatorius
           string vardas, pavarde;
           is>>vardas>>pavarde;
           s.setVardas(vardas);
           s.setPavarde(pavarde);
-          return is;
-      }
+          return is;}
 
-      //isvesties operatorius
-      friend ostream& operator<<(ostream& os, const studentas &s)
-      {
+      friend ostream& operator<<(ostream& os, const studentas &s){ //isvesties operatorius
           os<<left<<setw(20)<<s.getVardas()<<setw(20)<<s.getPavarde();
-          return os;
-      }
+          return os;}
 
       string getVardas() const { return vardas_; }
       string getPavarde() const { return pavarde_; }
