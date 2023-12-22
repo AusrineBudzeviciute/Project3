@@ -9,7 +9,7 @@ studentas::studentas() //konstruktorius
 studentas::~studentas() //destruktorius
 {
     delete[] elem;
-    cout<<"Objektas sunaikintas"<<endl;
+    //cout<<"Objektas sunaikintas"<<endl;
 }
 
 studentas::studentas(const studentas& o) { //kopijavimo konstruktorius
@@ -168,10 +168,8 @@ void Failo_nuskaitymas (string pavadinimas, studentas stud, vector <studentas> &
         if (namudarbas.substr(0, 2) == "ND") sk++;
     }
 
-    while(failas >> vardas >> pavarde)
+    while(failas >> stud)  //persidengimas
     {
-        stud.setVardas(vardas);
-        stud.setPavarde(pavarde);
         for(int i=0; i<sk; i++)
         {
             int paz;
@@ -260,9 +258,9 @@ void Failo_rusiavimas (vector<studentas> grupe)
 void print_file(string pavadinimas, vector<studentas> studentai)
 {
     ofstream g(pavadinimas);
-    g<<"Pavarde             Vardas              Galutinis (Vid.)"<<endl;
+    g<<"Vardas              Pavarde             Galutinis (Vid.)"<<endl;
     for (auto &a: studentai)
-        g<<left<<setw(20)<<a.getPavarde()<<setw(20)<<a.getVardas()<<setw(5)<<fixed<<setprecision(2)<<a.getRez()<<endl;
+        g<<left<<a<<setw(5)<<fixed<<setprecision(2)<<a.getRez()<<endl;
 }
 
 
