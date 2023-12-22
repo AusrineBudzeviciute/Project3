@@ -3,54 +3,48 @@
 studentas::studentas() //konstruktorius
 {
     egz_ = 0;
-    e = new int [egz_];
+    elem = new double [egz_];
 }
 
 studentas::~studentas() //destruktorius
 {
-    delete[] e;
-    cout<<"Objektas pasalintas"<<endl;
+    delete[] elem;
+    cout<<"Objektas sunaikintas"<<endl;
 }
 
-//copy konstruktorius
-studentas::studentas(const studentas& o) {
+studentas::studentas(const studentas& o) { //kopijavimo konstruktorius
     vardas_ = o.vardas_;
     pavarde_ = o.pavarde_;
     egz_ = o.egz_;
     pazymiai = o.pazymiai;
     rez_ = o.rez_;
     mediana_ = o.mediana_;
-    // Deep copy of the dynamic array elem
-    if (o.e != nullptr) {
-        e = new int[o.pazymiai.size()];
-        copy(o.e, o.e + o.pazymiai.size(), e);
+    if (o.elem != nullptr) {
+        elem = new double[o.pazymiai.size()];
+        copy(o.elem, o.elem + o.pazymiai.size(), elem);
     } else {
-        e = nullptr;
+        elem = nullptr;
     }
 }
-//priskyrimo operatorius
-studentas& studentas::operator=(const studentas& o) {
-    if (this != &o) { // Avoid self-assignment
+
+studentas& studentas::operator=(const studentas& o) { //priskyrimo operatorius
+    if (this != &o) { //saves priskyrimo aptikimas
         vardas_ = o.vardas_;
         pavarde_ = o.pavarde_;
         egz_ = o.egz_;
         pazymiai = o.pazymiai;
         rez_ = o.rez_;
         mediana_ = o.mediana_;
-        // Deallocate existing dynamic array
-        delete[] e;
-        // Deep copy of the dynamic array elem
-        if (o.e != nullptr) {
-            e = new int[o.pazymiai.size()];
-            copy(o.e, o.e + o.pazymiai.size(), e);
+        delete[] elem; //atlaisvinama atmintis
+        if (o.elem != nullptr) {
+            elem = new double[o.pazymiai.size()];
+            copy(o.elem, o.elem + o.pazymiai.size(), elem);
         } else {
-            e = nullptr;
+            elem = nullptr;
         }
     }
     return *this;
 }
-
-
 
 
 void studentas::setVardas(string vardas){
@@ -134,26 +128,26 @@ void tikrinimas(int& x)
 
 void print_mean(vector<studentas> grupe)
 {
-    cout<<"Pavarde             "<<"Vardas              "<<"Galutinis (Vid.)"<<endl;
+    cout<<"Vardas              Pavarde             Galutinis (Vid.)"<<endl;
     cout<<"---------------------------------------------------------"<<endl;
     for (auto &a: grupe)
-        cout<<left<<setw(20)<<a.getPavarde()<<setw(20)<<a.getVardas()<<setw(5)<<fixed<<setprecision(2)<<a.getRez()<<endl;
+        cout<<a<<setw(5)<<fixed<<setprecision(2)<<a.getRez()<<endl; //persidengimas
 }
 
 void print_median(vector<studentas> grupe)
 {
-    cout<<"Pavarde             "<<"Vardas              "<<"Galutinis (Med.)"<<endl;
+    cout<<"Vardas              Pavarde             Galutinis (Med.)"<<endl;
     cout<<"---------------------------------------------------------"<<endl;
     for (auto &a: grupe)
-        cout<<left<<setw(20)<<a.getPavarde()<<setw(20)<<a.getVardas()<<setw(5)<<fixed<<setprecision(2)<<a.getMediana()<<endl;
+        cout<<a<<setw(5)<<fixed<<setprecision(2)<<a.getMediana()<<endl; //persidengimas
 }
 
 void print_mean_median (vector<studentas> grupe)
 {
-    cout<<"Pavarde             Vardas              Galutinis (Vid.)    Galutinis (Med.)"<<endl;
+    cout<<"Vardas              Pavarde             Galutinis (Vid.)    Galutinis (Med.)"<<endl;
     cout<<"------------------------------------------------------------------------"<<endl;
     for (auto &a: grupe)
-        cout<<left<<setw(20)<<a.getPavarde()<<setw(20)<<a.getVardas()<<setw(20)<<fixed<<setprecision(2)<<a.getRez()<<setw(5)<<a.getMediana()<<endl;
+        cout<<a<<fixed<<setprecision(2)<<a.getRez()<<setw(5)<<a.getMediana()<<endl;
 }
 
 void Failo_nuskaitymas (string pavadinimas, studentas stud, vector <studentas> &grupe)
@@ -196,6 +190,28 @@ void Failo_nuskaitymas (string pavadinimas, studentas stud, vector <studentas> &
     auto end = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> diff = end-start;
     std::cout << "Failo nuskaitymas uztruko: "<< diff.count() << " s\n";
+}
+
+void Failo_kurimas (int studentusk)
+{
+    auto start = std::chrono::high_resolution_clock::now();
+    ofstream file ("studentai"+to_string(studentusk)+".txt");
+    if (!file){cerr<<"Failo klaida."<<endl;}
+
+    file << "Vardas              Pavarde             ND1  ND2  ND3  ND4  ND5  egz"<<endl;
+    for (int i = 1; i <= studentusk; i++)
+    {
+        file <<left<<setw(20)<<"Vardas"+to_string(i)<<left<<setw(20)<< "Pavarde"+to_string(i);
+
+        for (int i = 1; i < 6; i++){
+            file <<left<<setw(5)<< generate_random();
+        }
+        file<<left<< setw(5) << generate_random() <<endl;
+    }
+    file.close();
+    auto end = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> diff = end-start;
+    std::cout << "Failo kurimas uztruko: "<< diff.count() << " s\n";
 }
 
 void Failo_rusiavimas (vector<studentas> grupe)

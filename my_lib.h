@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <iomanip>
 #include <string>
@@ -48,17 +47,13 @@ class studentas {
       int egz_;
       vector<int> pazymiai;
       float rez_, mediana_;
-      int* e;
+      double *elem;
 
     public:
       studentas(); //konstruktorius
       ~studentas(); //destruktorius
-
-      //copy konstruktorius
-      studentas(const studentas& other);
-
-      //priskyrimo konstruktorius
-      studentas& operator=(const studentas& o);
+      studentas(const studentas& o); //kopijavimo konstruktorius
+      studentas& operator=(const studentas& o); //priskyrimo operatorius
 
       //ivesties operatorius
       friend istream& operator>>(istream& is, studentas &s)
@@ -73,7 +68,7 @@ class studentas {
       //isvesties operatorius
       friend ostream& operator<<(ostream& os, const studentas &s)
       {
-          os<<left<<setw(20)<<s.getPavarde()<<setw(20)<<s.getVardas();
+          os<<left<<setw(20)<<s.getVardas()<<setw(20)<<s.getPavarde();
           return os;
       }
 
@@ -109,6 +104,7 @@ void print_mean(vector<studentas> grupe);
 void print_median(vector<studentas> grupe);
 void print_mean_median (vector<studentas> grupe);
 void Failo_nuskaitymas (string pavadinimas, studentas stud, vector <studentas> &grupe);
+void Failo_kurimas (int studentusk);
 void Failo_rusiavimas (vector<studentas> grupe);
 void print_file(string pavadinimas, vector<studentas> studentai);
 

@@ -1,4 +1,3 @@
-
 #include "my_lib.h"
 
 int main()
@@ -6,7 +5,7 @@ int main()
     studentas stud;
     vector <studentas> grupe;
     int ivedimas1;
-    cout<<"Iveskite: '1' - failo nuskaitymui; '2' - duomenu ivedimui: ";
+    cout<<"Iveskite: '1' - failo nuskaitymui; '2' - duomenu ivedimui; '3' - duomenu generavimui; '4' - Rule of Three demonstracijai: ";
     cin>>ivedimas1;
 
 try{
@@ -31,9 +30,7 @@ try{
         {
             string vardas, pavarde;
             cout<<"Iveskite varda ir pavarde: "<<endl;
-            cin>>vardas>>pavarde;
-            stud.setVardas(vardas);
-            stud.setPavarde(pavarde);
+            cin>>stud; //persidengimas
 
             char ivedimas2;
             cout<<"Iveskite: '+' - duomenu generavimui; '-' - duomenu ivedimui: ";
@@ -89,16 +86,28 @@ try{
         else print_median(grupe);
     }
 
-    else if (ivedimas1==3) {
-                studentas vienas;
-                vienas.setVardas("Laima");
-                vienas.setPavarde("Laiminga");
-                studentas antras{vienas};
-                studentas trecias = vienas;
-                cout<<vienas<<endl;
-                cout<<antras<<endl;
-                cout<<trecias<<endl;
-            }
+
+    else if (ivedimas1==3)
+    {
+        int n;
+        cout<<"Iveskite, kiek studentu yra sarase:"<<endl;
+        cin>>n;
+        tikrinimas(n);
+        Failo_kurimas(n);
+    }
+
+
+    else if (ivedimas1==4)
+    {
+        studentas pirmas;
+        pirmas.setVardas("Laima");
+        pirmas.setPavarde("Laiminga");
+        studentas antras{pirmas};
+        studentas trecias = pirmas;
+        cout<<pirmas<<endl;
+        cout<<antras<<endl;
+        cout<<trecias<<endl;
+    }
 
 
 }
