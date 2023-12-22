@@ -1,3 +1,4 @@
+
 #include "my_lib.h"
 
 int main()
@@ -88,6 +89,17 @@ try{
         else print_median(grupe);
     }
 
+    else if (ivedimas1==3) {
+                studentas vienas;
+                vienas.setVardas("Laima");
+                vienas.setPavarde("Laiminga");
+                studentas antras{vienas};
+                studentas trecias = vienas;
+                cout<<vienas<<endl;
+                cout<<antras<<endl;
+                cout<<trecias<<endl;
+            }
+
 
 }
     catch (const exception& e) {
@@ -97,13 +109,4 @@ try{
     system("pause");
     return 0;
 }
-
-
-
-
-
-
-
-
-
 
