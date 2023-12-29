@@ -68,6 +68,9 @@ _Reikalavimai_: kompiuteryje turi būti įdiegta cMake (minimalus reikalavimas -
 2. .h failai įkeliami į aplanką 'include';
 3. Likę failai (CMakeLists.txt ir RUNMEE.bat) paliekami pagrindiniame aplanke.
 
+_Naudojimasis_: atidaroma Windows PowerShell ir pasiekiamas anksčiau sukurtas aplankas (įvestis: cd aplanko_pavadinimas). Suvedama .\RUNMEE.bat. Toliau darbas vyksta pagal gautus nurodymus ekrane.
+
+
 
 **TESTAVIMO SISTEMOS PARAMETRAI**
 
