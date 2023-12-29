@@ -40,17 +40,28 @@ using std::istream;
 using std::ostream;
 
 
+class zmogus {
+    protected:
+        string vardas_, pavarde_;
+        zmogus(){}
 
-class studentas {
+    public:
+        string getVardas() const {return vardas_;}
+        string getPavarde() const {return pavarde_;}
+        void setVardas(string);
+        void setPavarde(string);
+};
+
+
+class studentas : public zmogus{
     private:
-      string vardas_, pavarde_;
       int egz_;
       vector<int> pazymiai;
       float rez_, mediana_;
       double *elem;
 
     public:
-      studentas(); //konstruktorius
+      studentas() : zmogus(), egz_(0), rez_(0), mediana_(0), elem(nullptr) {}
       ~studentas(); //destruktorius
       studentas(const studentas& o); //kopijavimo konstruktorius
       studentas& operator=(const studentas& o); //priskyrimo operatorius
@@ -66,15 +77,11 @@ class studentas {
           os<<left<<setw(20)<<s.getVardas()<<setw(20)<<s.getPavarde();
           return os;}
 
-      string getVardas() const { return vardas_; }
-      string getPavarde() const { return pavarde_; }
       vector<int> getPazymiai() const { return pazymiai; }
       int getEgz() const { return egz_; }
       float getRez() const { return rez_; }
       float getMediana() const { return mediana_; }
 
-      void setVardas(string);
-      void setPavarde(string);
       void setEgz(int);
       void setRez(float);
       void setMediana(float);
