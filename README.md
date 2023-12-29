@@ -1,6 +1,6 @@
-# v1.2 Antra užduotėlė
+# v1.5 Antra užduotėlė
 
-Programa sukurta pirmos užduoties pagrindu, tačiau vietoje struktūros, naudojama klasė; palikta greičiausiai veikianti rūšiavimo strategija: vector konteineris + 3 strategija. Programoje realizuota „Rule of three“ ir įvesties/išvesties operatoriai. Sukurta galimybė pamatyti, kaip veikia minėti operatoriai, įvestis ir išvestis integruota į pačią programą: įvestis perdengta tiek rankiniu būdu vedamiems duomenims, tiek nuskaitant failą; išvestis perdengta į ekraną ir į failą spausdinamiems rezultatams.
+Programa sukurta pirmos užduoties pagrindu, tačiau vietoje struktūros, naudojama klasė; palikta greičiausiai veikianti rūšiavimo strategija: vector konteineris + 3 strategija. Programoje realizuota „Rule of three“ ir įvesties/išvesties operatoriai. Sukurta galimybė pamatyti, kaip veikia minėti operatoriai, įvestis ir išvestis integruota į pačią programą: įvestis perdengta tiek rankiniu būdu vedamiems duomenims, tiek nuskaitant failą; išvestis perdengta į ekraną ir į failą spausdinamiems rezultatams. Programa papildyta nauja 'zmogus' klase, taigi dabar egzistuoja dvi - bazinė (abstrakčioji) ir išvestinė - klasės.
 
 
 **Rule of three realizavimas**
