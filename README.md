@@ -14,7 +14,8 @@ Programa sukurta pirmos užduoties pagrindu, tačiau vietoje struktūros, naudoj
 
 **ĮVESTIES/IŠVESTIES OPERATORIAI**
 
-![image](https://github.com/AusrineBudzeviciute/Project2/assets/145910900/fc7bdaef-fa06-4b8b-9853-947a5a3f563a)
+![image](https://github.com/AusrineBudzeviciute/Project2/assets/145910900/5e6a0bbc-a9b2-4578-9827-65bb3bfc873c)
+
 
 **ANALIZĖ** 
 
