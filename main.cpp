@@ -5,7 +5,7 @@ int main()
     studentas stud;
     vector <studentas> grupe;
     int ivedimas1;
-    cout<<"Iveskite: '1' - failo nuskaitymui; '2' - duomenu ivedimui; '3' - duomenu generavimui; '4' - Rule of Three demonstracijai: ";
+    cout<<"Iveskite: '1' - failo nuskaitymui; '2' - duomenu ivedimui; '3' - duomenu generavimui; '4' - demonstracijai: ";
     cin>>ivedimas1;
 
 try{
@@ -28,7 +28,6 @@ try{
 
         for (int i=0; i<n; i++)
         {
-            string vardas, pavarde;
             cout<<"Iveskite varda ir pavarde: "<<endl;
             cin>>stud; //persidengimas
 
@@ -105,6 +104,8 @@ try{
         studentas s_c{s};
         studentas s_p = s;
         cout<<"Sukurtas studentas:\n"<<s<<"\nNukopijuotas studentas:\n"<<s_c<<"\nPriskirtas studentas:\n"<<s_p<<endl;
+        zmogus zmog; //NEGALIMA SUKURTI ZMOGAUS TIPO OBJEKTU
+        cout<<"Panaudojamas zmogaus klases metodas: "<< s.getVardas()<<endl;
     }
 
 
