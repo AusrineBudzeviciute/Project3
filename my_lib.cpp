@@ -1,9 +1,5 @@
 #include "my_lib.h"
 
- studentas::studentas(){ //konstruktorius
-    egz_ = 0;
-    elem = new double [egz_];}
-
  studentas::~studentas(){ //destruktorius
     delete[] elem;
     //cout<<"Objektas sunaikintas"<<endl;
@@ -44,10 +40,11 @@
  }
 
 
-void studentas::setVardas(string vardas){
+void zmogus::setVardas(string vardas){
     vardas_ = vardas;}
-void studentas::setPavarde(string pavarde){
+void zmogus::setPavarde(string pavarde){
     pavarde_ = pavarde;}
+
 void studentas::setEgz(int egz) {
     egz_ = egz;}
 void studentas::setRez(float rez) {
