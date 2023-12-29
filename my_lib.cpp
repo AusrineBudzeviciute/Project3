@@ -40,11 +40,6 @@
  }
 
 
-void zmogus::setVardas(string vardas){
-    vardas_ = vardas;}
-void zmogus::setPavarde(string pavarde){
-    pavarde_ = pavarde;}
-
 void studentas::setEgz(int egz) {
     egz_ = egz;}
 void studentas::setRez(float rez) {
@@ -259,6 +254,7 @@ void print_file(string pavadinimas, vector<studentas> studentai)
     for (auto &a: studentai)
         g<<left<<a<<setw(5)<<fixed<<setprecision(2)<<a.getRez()<<endl; //persidengimas
 }
+
 
 
 

@@ -40,31 +40,31 @@ using std::istream;
 using std::ostream;
 
 
-class zmogus {
-    protected:
-        string vardas_, pavarde_;
-        zmogus(){}
 
-    public:
-        string getVardas() const {return vardas_;}
-        string getPavarde() const {return pavarde_;}
-        void setVardas(string);
-        void setPavarde(string);
+class zmogus{
+protected:
+    string vardas_, pavarde_;
+    zmogus() {}
+public:
+    virtual ~zmogus() {}
+    virtual string getVardas() const = 0;
+    virtual string getPavarde() const = 0;
+    virtual void setVardas(string) = 0;
+    virtual void setPavarde(string) = 0;
 };
 
 
 class studentas : public zmogus{
-    private:
-      int egz_;
-      vector<int> pazymiai;
-      float rez_, mediana_;
-      double *elem;
-
-    public:
-      studentas() : zmogus(), egz_(0), rez_(0), mediana_(0), elem(nullptr) {}
-      ~studentas(); //destruktorius
-      studentas(const studentas& o); //kopijavimo konstruktorius
-      studentas& operator=(const studentas& o); //priskyrimo operatorius
+private:
+    int egz_;
+    vector<int> pazymiai;
+    float rez_, mediana_;
+    double *elem;
+public:
+    studentas() : zmogus(), egz_(0), rez_(0), mediana_(0), elem(nullptr) {}
+    ~studentas(); //destruktorius
+    studentas(const studentas& o); //kopijavimo konstruktorius
+    studentas& operator=(const studentas& o); //priskyrimo operatorius
 
       friend istream& operator>>(istream& is, studentas &s){ //ivesties operatorius
           string vardas, pavarde;
@@ -80,11 +80,14 @@ class studentas : public zmogus{
           os<<left<<setw(20)<<s.getVardas()<<setw(20)<<s.getPavarde();
           return os;}
 
-      vector<int> getPazymiai() const { return pazymiai; }
+    string getVardas() const override {return vardas_;}
+    string getPavarde() const override {return pavarde_;}
+    vector<int> getPazymiai() const { return pazymiai; }
       int getEgz() const { return egz_; }
       float getRez() const { return rez_; }
       float getMediana() const { return mediana_; }
-
+    void setVardas(string vardas) override {vardas_ = vardas;}
+    void setPavarde(string pavarde) override {pavarde_ = pavarde;}
       void setPazymiai(int);
       void setEgz(int);
       void setRez(float);
@@ -92,6 +95,7 @@ class studentas : public zmogus{
       void clearPazymiai();
 
 };
+
 
 
 
@@ -111,4 +115,5 @@ void Failo_nuskaitymas (string pavadinimas, studentas stud, vector <studentas> &
 void Failo_kurimas (int studentusk);
 void Failo_rusiavimas (vector<studentas> grupe);
 void print_file(string pavadinimas, vector<studentas> studentai);
+
 
