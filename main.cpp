@@ -104,7 +104,7 @@ try{
         studentas s_c{s};
         studentas s_p = s;
         cout<<"Sukurtas studentas:\n"<<s<<"\nNukopijuotas studentas:\n"<<s_c<<"\nPriskirtas studentas:\n"<<s_p<<endl;
-        zmogus zmog; //NEGALIMA SUKURTI ZMOGAUS TIPO OBJEKTU
+//        zmogus zmog; //NEGALIMA SUKURTI ZMOGAUS TIPO OBJEKTU
         cout<<"Panaudojamas zmogaus klases metodas: "<< s.getVardas()<<endl;
     }
 
