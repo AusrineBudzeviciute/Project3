@@ -28,8 +28,9 @@ try{
 
         for (int i=0; i<n; i++)
         {
+            string vardas, pavarde;
             cout<<"Iveskite varda ir pavarde: "<<endl;
-            cin>>stud; //persidengimas
+            cin>>vardas>>pavarde;
 
             char ivedimas2;
             cout<<"Iveskite: '+' - duomenu generavimui; '-' - duomenu ivedimui: ";
@@ -105,7 +106,7 @@ try{
         studentas s_p = s;
         cout<<"Sukurtas studentas:\n"<<s<<"\nNukopijuotas studentas:\n"<<s_c<<"\nPriskirtas studentas:\n"<<s_p<<endl;
 //        zmogus zmog; //NEGALIMA SUKURTI ZMOGAUS TIPO OBJEKTU
-        cout<<"Panaudojamas zmogaus klases metodas: "<< s.getVardas()<<endl;
+//        cout<<"Panaudojamas zmogaus klases metodas: "<< s.getVardas()<<endl;
     }
 
 

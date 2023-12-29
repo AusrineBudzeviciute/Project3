@@ -68,9 +68,12 @@ class studentas : public zmogus{
 
       friend istream& operator>>(istream& is, studentas &s){ //ivesties operatorius
           string vardas, pavarde;
-          is>>vardas>>pavarde;
+          int egz, paz;
+          is>>vardas>>pavarde>>paz>>egz;
           s.setVardas(vardas);
           s.setPavarde(pavarde);
+          s.setPazymiai(paz);
+          s.setEgz(egz);
           return is;}
 
       friend ostream& operator<<(ostream& os, const studentas &s){ //isvesties operatorius
@@ -82,10 +85,10 @@ class studentas : public zmogus{
       float getRez() const { return rez_; }
       float getMediana() const { return mediana_; }
 
+      void setPazymiai(int);
       void setEgz(int);
       void setRez(float);
       void setMediana(float);
-      void setPazymiai(int);
       void clearPazymiai();
 
 };

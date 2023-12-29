@@ -162,14 +162,17 @@ void Failo_nuskaitymas (string pavadinimas, studentas stud, vector <studentas> &
         if (namudarbas.substr(0, 2) == "ND") sk++;
     }
 
-    while(failas >> stud)  //persidengimas
+    while(failas >> vardas >> pavarde)
     {
+        stud.setVardas(vardas);
+        stud.setPavarde(pavarde);
         for(int i=0; i<sk; i++)
         {
             int paz;
             if(!(failas>>paz)) throw invalid_argument("Netinkamas pazymys faile.");
             if (paz<=0 || paz>10) throw invalid_argument("Netinkamas pazymys faile.");
             stud.setPazymiai(paz);
+
         }
         failas >> egz;
         stud.setEgz(egz);
