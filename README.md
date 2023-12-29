@@ -63,8 +63,11 @@ naudojant struktūrą arba klasę ir naudojant skirtingus flag'us (O1, O2, O3).
 
 **ĮDIEGIMO, NAUDOJIMOSI INSTRUKCIJA**
 
+_Reikalavimai_: kompiuteryje turi būti įdiegta cMake (minimalus reikalavimas - 3.28 versija). Sukuriamas naujas aplankas, jame dar du nauji aplankai - 'src' ir 'include'. Toliau darbas su failais vyksta taip: 
+1. .cpp failai įkeliami į aplanką 'src', esant poreikiui šis aplankas papildomas tekstiniais testavimo failais;
+2. .h failai įkeliami į aplanką 'include';
+3. Likę failai (CMakeLists.txt ir RUNMEE.bat) paliekami pagrindiniame aplanke.
 
-Failai sukeliami į aplanką ir išskaidomi į dar 2 atskirus aplankus: 'src' aplanke patalpinami .cpp failai bei (jeigu yra poreikis) .txt failai; 'include' aplanke patalpinami .h failai; likę failai paliekami pagrindiniame aplanke. Atidaromas terminalas ir jame pasiekiamas sukurtas aplankas. Suvedama '.\RUNMEE.bat' ir programa pasileidžia.
 
 **TESTAVIMO SISTEMOS PARAMETRAI**
 
