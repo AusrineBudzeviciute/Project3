@@ -1,6 +1,18 @@
 # v3.0 Trečia užduotėlė
 
-Programa sukurta pirmos užduoties pagrindu, tačiau vietoje struktūros, naudojama klasė; palikta greičiausiai veikianti rūšiavimo strategija: vector konteineris + 3 strategija. Programoje realizuota „Rule of three“ ir įvesties/išvesties operatoriai. Sukurta galimybė pamatyti, kaip veikia minėti operatoriai, įvestis ir išvestis integruota į pačią programą: įvestis perdengta tiek rankiniu būdu vedamiems duomenims, tiek nuskaitant failą; išvestis perdengta į ekraną ir į failą spausdinamiems rezultatams. Programa papildyta nauja 'zmogus' klase, taigi dabar egzistuoja dvi - bazinė (abstrakčioji) ir išvestinė - klasės.
+## Programos diegimo failo naudojimosi instrukcija:
+1. Atsisiunčiami failai, esantys 'setup' aplanke;
+2. Paleidžiamas setup.exe failas ir įdiegiama programa;
+3. Programa paleidžiama atsidarius "MyConsoleApp", esančią Desktop'e;
+4. Toliau darbas vyksta pagal poreikį, atsižvelgiant į ekrane esančius reikalavimus.
+
+## Aprašymas
+Programa nuskaito duomenis iš failo, automatiškai sugeneruoja duomenis arba leidžia juos suvesti vartotojui. 
+Skaičiuojami ir išvedami (pasirinktinai) mediana arba vidurkis. 
+Analizei atlikti matuojamas laikas: failų generavimo, nuskaitymo, rūšiavimo bei gaunamų failų kūrimo laiką. 
+Programoje realizuota „Rule of three“ ir įvesties/išvesties operatoriai. 
+Sukurta galimybė pamatyti, kaip veikia minėti operatoriai, įvestis ir išvestis integruota į pačią programą: įvestis perdengta tiek rankiniu būdu vedamiems duomenims, tiek nuskaitant failą; išvestis perdengta į ekraną ir į failą spausdinamiems rezultatams. 
+Programoje realizuotos dvi - bazinė (abstrakčioji) ir išvestinė - klasės.
 
 
 **Rule of three realizavimas**
