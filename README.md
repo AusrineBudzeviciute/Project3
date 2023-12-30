@@ -9,26 +9,26 @@
 ## Aprašymas
 Programa nuskaito duomenis iš failo, automatiškai sugeneruoja duomenis arba leidžia juos suvesti vartotojui. 
 Skaičiuojami ir išvedami (pasirinktinai) mediana arba vidurkis. 
-Analizei atlikti matuojamas laikas: failų generavimo, nuskaitymo, rūšiavimo bei gaunamų failų kūrimo laiką. 
+Analizei atlikti matuojamas laikas: failų generavimo, nuskaitymo, rūšiavimo bei gaunamų failų kūrimo laikas. 
 Programoje realizuota „Rule of three“ ir įvesties/išvesties operatoriai. 
 Sukurta galimybė pamatyti, kaip veikia minėti operatoriai, įvestis ir išvestis integruota į pačią programą: įvestis perdengta tiek rankiniu būdu vedamiems duomenims, tiek nuskaitant failą; išvestis perdengta į ekraną ir į failą spausdinamiems rezultatams. 
 Programoje realizuotos dvi - bazinė (abstrakčioji) ir išvestinė - klasės.
 
 
-**Rule of three realizavimas**
+### Rule of three realizavimas
 
 ![image](https://github.com/AusrineBudzeviciute/Project2/assets/145910900/a72a862c-e4e6-480f-ae71-95dfe7bad001)
 
 ![image](https://github.com/AusrineBudzeviciute/Project2/assets/145910900/afc4d8ad-5c2d-4aa2-a8e1-2de3b2388c78)
 
-**Įvesties/išvesties operatoriai**
+### Įvesties/išvesties operatoriai
 
 ![image](https://github.com/AusrineBudzeviciute/Project2/assets/145910900/fc7bdaef-fa06-4b8b-9853-947a5a3f563a)
 
-**ANALIZĖ.** 
+## Analizė
 
 Analizei naudoti 2 failai, turintys skirtingą studentų skaičių: 100000, 1000000. Sugeneruoti failai buvo testuojami 5 kartus ir imamas matavimų vidurkis. Testavimas vykdomas keliais skiritingais scenarijais: 
-naudojant struktūrą arba klasę ir naudojant skirtingus flag'us (O1, O2, O3).
+naudojant struktūrą arba klasę ir naudojant skirtingus flag'us (O1, O2, O3). Rezultatai lyginami su 1 užduoties analizės rezultatais.
 
 **_struktūros rezultatai_**                                                 
 |                                                 |  100000 | 1000000 |
@@ -69,11 +69,7 @@ naudojant struktūrą arba klasę ir naudojant skirtingus flag'us (O1, O2, O3).
 
 **Išvada:** tiek naudojant struktūrą, tiek klasę su skirtingais flag'ais, sparta skiriasi nežymiai; klasės atveju O3 flag'as veikia sparčiausiai.
 
-**ĮDIEGIMO, NAUDOJIMOSI INSTRUKCIJA**
-
-Failai sukeliami į aplanką ir išskaidomi į dar 2 atskirus aplankus: 'src' aplanke patalpinami .cpp failai bei (jeigu yra poreikis) .txt failai; 'include' aplanke patalpinami .h failai; likę failai paliekami pagrindiniame aplanke. Atidaromas terminalas ir jame pasiekiamas sukurtas aplankas. Suvedama '.\RUNMEE.bat' ir programa pasileidžia.
-
-**Testavimo sistemos parametrai:**
+### Testavimo sistemos parametrai:
 
 CPU: Intel(R) Core(TM) i5-10300H CPU @ 2.50GHz, 2496 Mhz, 4 Core(s), 8 Logical Processor(s)
 
