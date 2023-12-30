@@ -139,7 +139,7 @@ void print_mean_median (vector<studentas> grupe)
         cout<<a<<fixed<<setprecision(2)<<a.getRez()<<setw(5)<<a.getMediana()<<endl;
 }
 
-void Failo_nuskaitymas (string pavadinimas, studentas stud, vector <studentas> &grupe)
+void Failo_nuskaitymas (string pavadinimas, studentas& stud, vector <studentas> &grupe)
 {
     auto start = std::chrono::high_resolution_clock::now();
     ifstream failas(pavadinimas);
@@ -157,10 +157,8 @@ void Failo_nuskaitymas (string pavadinimas, studentas stud, vector <studentas> &
         if (namudarbas.substr(0, 2) == "ND") sk++;
     }
 
-    while(failas >> vardas >> pavarde)
+    while(failas >> stud)
     {
-        stud.setVardas(vardas);
-        stud.setPavarde(pavarde);
         for(int i=0; i<sk; i++)
         {
             int paz;

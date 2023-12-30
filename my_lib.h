@@ -47,10 +47,11 @@ protected:
     zmogus() {}
 public:
     virtual ~zmogus() {}
-    virtual string getVardas() const = 0;
-    virtual string getPavarde() const = 0;
-    virtual void setVardas(string) = 0;
-    virtual void setPavarde(string) = 0;
+    virtual string getVardas() const {return vardas_;}
+    virtual string getPavarde() const {return pavarde_;}
+    virtual void setVardas(string vardas) {vardas_ = vardas;}
+    virtual void setPavarde(string pavarde) {pavarde_ = pavarde;}
+
 };
 
 
@@ -66,33 +67,30 @@ public:
     studentas(const studentas& o); //kopijavimo konstruktorius
     studentas& operator=(const studentas& o); //priskyrimo operatorius
 
-      friend istream& operator>>(istream& is, studentas &s){ //ivesties operatorius
+    friend istream& operator>>(istream& is, studentas &s){ //ivesties operatorius
           string vardas, pavarde;
-          int egz, paz;
-          is>>vardas>>pavarde>>paz>>egz;
+          is>>vardas>>pavarde;
           s.setVardas(vardas);
           s.setPavarde(pavarde);
-          s.setPazymiai(paz);
-          s.setEgz(egz);
           return is;}
 
       friend ostream& operator<<(ostream& os, const studentas &s){ //isvesties operatorius
           os<<left<<setw(20)<<s.getVardas()<<setw(20)<<s.getPavarde();
           return os;}
 
-    string getVardas() const override {return vardas_;}
-    string getPavarde() const override {return pavarde_;}
+    string getVardas() const { return zmogus::getVardas(); }
+    string getPavarde() const { return zmogus::getPavarde(); }
     vector<int> getPazymiai() const { return pazymiai; }
-      int getEgz() const { return egz_; }
-      float getRez() const { return rez_; }
-      float getMediana() const { return mediana_; }
-    void setVardas(string vardas) override {vardas_ = vardas;}
-    void setPavarde(string pavarde) override {pavarde_ = pavarde;}
-      void setPazymiai(int);
-      void setEgz(int);
-      void setRez(float);
-      void setMediana(float);
-      void clearPazymiai();
+    int getEgz() const { return egz_; }
+    float getRez() const { return rez_; }
+    float getMediana() const { return mediana_; }
+    void setVardas(string vardas) { zmogus::setVardas(vardas); }
+    void setPavarde(string pavarde) { zmogus::setPavarde(pavarde); }
+    void setPazymiai(int);
+    void setEgz(int);
+    void setRez(float);
+    void setMediana(float);
+    void clearPazymiai();
 
 };
 
@@ -111,7 +109,7 @@ float mean(vector<int> pazymiai, int egzaminas);
 void print_mean(vector<studentas> grupe);
 void print_median(vector<studentas> grupe);
 void print_mean_median (vector<studentas> grupe);
-void Failo_nuskaitymas (string pavadinimas, studentas stud, vector <studentas> &grupe);
+void Failo_nuskaitymas (string pavadinimas, studentas& stud, vector <studentas> &grupe);
 void Failo_kurimas (int studentusk);
 void Failo_rusiavimas (vector<studentas> grupe);
 void print_file(string pavadinimas, vector<studentas> studentai);
